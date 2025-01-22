@@ -1,10 +1,11 @@
 import unittest
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 from word_tokenizer import WordTokenizer
 
 class TestWordTokenizer(unittest.TestCase):
+
     def setUp(self):
         self.tokenizer = WordTokenizer()
 
@@ -34,6 +35,9 @@ class TestWordTokenizer(unittest.TestCase):
 
     def test_with_multiple_spaces(self):
         self.assertEqual(self.tokenizer.tokenize("hello    world"), ["hello", "world"])
+
+    def test_with_apostrophes(self):
+        self.assertEqual(self.tokenizer.tokenize("I'm fine thank-you!"), ["I'm", "fine", "thank", "you"])
 
 if __name__ == '__main__':
     unittest.main()
