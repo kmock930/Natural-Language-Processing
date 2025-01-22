@@ -2,3 +2,4 @@
 **.pyc
 **/__pycache__/
 *.zip
+**/extracted_txt_files/
