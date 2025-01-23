@@ -1,4 +1,5 @@
 import re
+from collections import Counter
 
 class WordTokenizer:
     word_pattern: str = r"\b\w+(?:'\w+)?\b"
@@ -18,12 +19,10 @@ class WordTokenizer:
         @return: a dictionary with each token as the key and the number of occurrences as the value
         '''
         tokens: list = self.tokenize(text)
-        occurrences: dict = {}
-        for token in tokens:
-            if token in occurrences:
-                continue
-            else:
-                occurrences[token] = WordTokenizer.count_word(self.corpus, token)
+        # Count the occurrences of each unique word in the original corpus
+        word_counts = Counter(tokens)
+        # Convert the Counter object to a dictionary
+        occurrences: dict = dict(word_counts)
         return occurrences
 
     @staticmethod
