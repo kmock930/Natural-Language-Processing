@@ -10,3 +10,11 @@
 3. Concatenate text files to form a corpus.
 4. Analyze statistics about tokens in the corpus.
 * Note: Unlike source codes which are stored at `src` directory, unit tests are stored under `tests` directory. 
+### Execution of Codes
+#### Analytical Results
+Please run all cells in the Jupyter Notebook named `Part 1 - Corpus Processing.ipynb` sequentially.
+#### Word Tokenizer
+* Please run the test file named `tests/test_word_tokenizer.py`. 
+* Please also run another test file named `tests/test_count_occurences.py`. 
+#### Experimental Lemmantizer
+Please run the test file named `tests/test_lemmatizer.py`. 
