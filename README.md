@@ -1,5 +1,6 @@
 # Natural Language Processing Work
-## Assignment: Corpus analysis and sentence embeddings
+## Assignment 1: Corpus analysis and sentence embeddings
+All codes are in the directory named `Assignment 1`.
 ### Prerequisite Files:
 * Dataset - the given corpus: [The Atticus dataset of legal contacts](https://zenodo.org/record/4595826#.YyXT6HbMI2w)
 * A text file containing a list of stopwords (to evaluate the lexical density): [`StopWords.txt`](http://www.site.uottawa.ca/~diana/csi5180/StopWords)
