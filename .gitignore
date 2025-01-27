@@ -3,3 +3,4 @@
 **/__pycache__/
 *.zip
 **/extracted_txt_files/
+**.docx
