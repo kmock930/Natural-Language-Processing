@@ -4,6 +4,7 @@ All codes are in the directory named `Assignment 1`.
 ### Prerequisite Files:
 * Dataset - the given corpus: [The Atticus dataset of legal contacts](https://zenodo.org/record/4595826#.YyXT6HbMI2w)
 * A text file containing a list of stopwords (to evaluate the lexical density): [`StopWords.txt`](http://www.site.uottawa.ca/~diana/csi5180/StopWords)
+* To install all dependencies, run this command with your terminal under `src` and `tests` directories respectively: `pip install -r requirements.txt`
 * Note: All the prerequisite files are placed the archive at `Assignment 1/src/` directory.
 ### Part 1: Corpus processing (legal text): tokenization and word counting
 1. Implementation of our Word Tokenizer
