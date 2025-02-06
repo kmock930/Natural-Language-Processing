@@ -4,3 +4,4 @@
 *.zip
 **/extracted_txt_files/
 **.docx
+**/STS_Data/
