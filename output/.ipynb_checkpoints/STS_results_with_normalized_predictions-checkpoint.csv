@@ -1,4 +1,4 @@
-sentence1,sentence2,gold_label,normalized_similarity_stsb-roberta-large (SBERT),normalized_similarity_paraphrase-MiniLM-L6-v2,normalized_similarity_bert-base-nli-mean-tokens,normalized_similarity_all-mpnet-base-v2
+sentence1,sentence2,gold_label,normalized_similarity_stsb-roberta-large,normalized_similarity_paraphrase-MiniLM-L6-v2,normalized_similarity_bert-base-nli-mean-tokens,normalized_similarity_all-mpnet-base-v2
 Tasting it is the only reliable way.,The way you have it is fine.,3.0,2.617199925339575,2.389244574156867,2.7561340899931777,0.7879306428020196
 I think it probably depends on your money.,It depends on your country.,3.0,2.37550362966464,2.8468392394803246,3.1392064103832666,1.7350462992990565
 You need to read a lot to know what you like and what you don't.,You don't have to know.,0.0,1.5485105467831972,2.1724745630446347,0.0,1.6057521674660944
