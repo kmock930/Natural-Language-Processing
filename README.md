@@ -1,17 +1,24 @@
 # Natural Language Processing Work
 ## Assignment 1: Corpus analysis and sentence embeddings
 All codes are in the directory named `Assignment 1`.
+
+---
+
 ### Prerequisite Files:
 * Dataset - the given corpus: [The Atticus dataset of legal contacts](https://zenodo.org/record/4595826#.YyXT6HbMI2w)
 * A text file containing a list of stopwords (to evaluate the lexical density): [`StopWords.txt`](http://www.site.uottawa.ca/~diana/csi5180/StopWords)
 * To install all dependencies, run this command with your terminal under `src` and `tests` directories respectively: `pip install -r requirements.txt`
 * Note: All the prerequisite files are placed the archive at `Assignment 1/src/` directory.
+---
+
 ### Part 1: Corpus processing (legal text): tokenization and word counting
 1. Implementation of our Word Tokenizer
 2. Extract the given corpus.
 3. Concatenate text files to form a corpus.
 4. Analyze statistics about tokens in the corpus.
 * Note: Unlike source codes which are stored at `src` directory, unit tests are stored under `tests` directory. 
+---
+
 ### Execution of Codes
 #### Analytical Results
 Please run all cells in the Jupyter Notebook named `Part 1 - Corpus Processing.ipynb` sequentially.
@@ -20,6 +27,8 @@ Please run all cells in the Jupyter Notebook named `Part 1 - Corpus Processing.i
 * Please also run another test file named `tests/test_count_occurences.py`. 
 #### Experimental Lemmantizer
 Please run the test file named `tests/test_lemmatizer.py`. 
+
+---
 
 ### Part 2: Evaluation of Pre-trained Sentence Embedding Models
 
@@ -48,8 +57,8 @@ Concatenate these files to form a single test dataset as required by your experi
 
 ---
 
-##### 2. Execution of Code
-### Running the Evaluation:
+#### 2. Execution of Code
+##### Running the Evaluation:
 1. Open the Jupyter Notebook `Part 2 - Sentence Similarity.ipynb`.
 2. Run all cells sequentially to evaluate the pre-trained sentence embedding models.
 
@@ -58,12 +67,12 @@ The notebook includes:
 - Applying pre-trained models such as SBERT and other LLM-based embeddings.
 - Evaluating similarity and computing the Pearson correlation with ground truth scores.
 
-###### Generating Results:
+##### Generating Results:
 - Outputs of the experiments will be saved in the directory `Part 2 - Output/`.
 
 ---
 
-##### 3. Models Used
+#### 3. Models Used
 Pre-trained sentence embedding models evaluated include:
 - **SBERT (Sentence-BERT)**: A model designed for semantic textual similarity tasks.
 - **Additional models** (e.g., models based on recent generative LLMs).
