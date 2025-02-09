@@ -2,6 +2,7 @@
 ## Assignment 1: Corpus analysis and sentence embeddings
 All codes are in the directory named `Assignment 1`.
 
+Check our our [Report](https://github.com/kmock930/Natural-Language-Processing/blob/main/Assignment%201/CSI5386%20NLP%20Assignment%201%20Report%20-%20Kelvin%2C%20Jenifer%2C%20Sabrina.pdf)
 ---
 
 ### Prerequisite Files:
