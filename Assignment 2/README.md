@@ -13,4 +13,5 @@ All codes are in the directory named `Assignment 2`.
 ## Baseline Model - Logistic Regression
 * Please run the Jupyter Notebook named [`part_1.ipynb`](./part_1.ipynb) sequentially to check out the training and prediction processes, as well as evaluation results. 
 * A model is dumped into the [`models` direcotory](./models).
+* Train set, Dev set, and test set data are dumped into `.npy` files in [`data` directory](./data/).
 * Results of this model is saved into the [`content` directory](./content/).
