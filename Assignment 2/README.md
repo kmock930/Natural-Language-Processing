@@ -8,6 +8,7 @@ All codes are in the directory named `Assignment 2`.
 * `subtaskA_monolingual.jsonl`
 * `subtaskA_train_monolingual.jsonl`
 * To install all dependencies, run this command with your terminal: `pip install -r requirements.txt`
+* Setup [conda](https://stackoverflow.com/questions/44515769/conda-is-not-recognized-as-internal-or-external-command) and [cuda](https://www.tensorflow.org/install/pip) for tensorflow and configure your environment such that codes run on your **GPU** instead. 
 ---
 
 ## Baseline Model - Logistic Regression
