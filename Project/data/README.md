@@ -6,3 +6,5 @@ This project intends to collect necessary data (for modeling) from a combination
 Raw data are loaded into `reddit_suicidewatch.json`.
 
 [**Social Media Sentiments Analysis Dataset**](./Social_Media_Sentiments_Analysis_Dataset/): Dataset is downloaded into a .csv format from <url>https://www.kaggle.com/datasets/kashishparmar02/social-media-sentiments-analysis-dataset?resource=download</url>
+
+[**Twitter Suicidal Data**](./Twitter_Suicidal_Data/): Dataset is downloaded into a .csv format from <url>https://www.kaggle.com/datasets/hosammhmdali/twitter-suicidal-data</url>
