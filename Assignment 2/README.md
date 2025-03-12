@@ -10,6 +10,7 @@ All codes are in the directory named `Assignment 2`.
 * To install all dependencies, run this command with your terminal: `pip install -r requirements.txt`
 * Run this alternative command if you are training the deep learning model on a Linux-based system: `requirements_for_deep_learning_linux.txt`.
 * Setup [conda](https://stackoverflow.com/questions/44515769/conda-is-not-recognized-as-internal-or-external-command) and [cuda](https://www.tensorflow.org/install/pip) for tensorflow and configure your environment such that codes run on your **GPU** instead. 
+* A script for system's [health check](../health_check.py) is available at the root level of the repository. 
 ---
 
 ## Baseline Model - Logistic Regression
@@ -19,10 +20,16 @@ All codes are in the directory named `Assignment 2`.
 * Results of this model is saved into the [`content` directory](./content/).
 
 ## Deep Learning based Transformer Model - Fine Tuning DistilBERT
-* This part consists of 2 notebooks. To execute the fine tuning process, if you have sufficient computational resources, you may run this notebook sequentially: [`part_2_deep_learning_training.ipynb`](./part_2_deep_learning_training.ipynb).
+* This part consists of 2 notebooks: 
+1. To execute the fine tuning process, if you have sufficient computational resources, you may run this notebook sequentially: [`part_2_deep_learning_training.ipynb`](./part_2_deep_learning_training.ipynb).
+2. To execute the prediction & evaluation process, you may run this notebook sequentially: [`part_2_deep_learning_evaluation.ipynb`](./part_2_deep_learning_evaluation.ipynb).
 * The computational resources required is outlined in the notebook. 
 * The pre-trained model is loaded and dumped into the [`models` direcotory](./models).
 * The fine-tuned model is also dumped into the same [`models directory`](./models/).
 * It uses a tokenizer which is different from the baseline model - `TFDistilBertForSequenceClassification`.
 * It uses the entire training set and the entire dev set as the validation set during the training process.
 * The model is further trained with the tokenizer's `max_depth=32`, batch size = 4, Adam's optimizer, in 5 epochs, with Tensorflow. 
+* Results of this model is saved into the [`content` directory](./content/).
+
+## Check the Best Model and its Results
+* After executing all the programs covering the training and evaluation processes for all models, run [`ModelSummarizer.py`](./ModelSummarizer.py) to check whichever is the best model. It is determined by the combination of accuracies, macro and micro F1 scores. The results of the best model is copied to [`Results.jsonl`](./content/Results.jsonl).
