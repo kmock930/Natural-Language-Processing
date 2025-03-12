@@ -2,6 +2,8 @@ import numpy as np
 from sklearn.metrics import accuracy_score, f1_score
 import shutil
 import os
+import matplotlib.pyplot as plt
+import pandas as pd
 
 def evaluate(models: list[dict]):
     """
@@ -54,6 +56,26 @@ def summarize(models: list[dict]):
     bestModel = max(models, key=lambda x: (x["accuracy"], x["macroF1"], x["microF1"]))
     return bestModel
 
+def plotComparison(models: list[dict]):
+    ROOT = os.path.dirname(os.path.abspath(__file__))
+    metrics = ["accuracy", "macroF1", "microF1"]
+    data = {metric: [model[metric] for model in models] for metric in metrics}
+    data["modelName"] = [model["modelName"] for model in models]
+    
+    df = pd.DataFrame(data)
+    df.set_index("modelName", inplace=True)
+    
+    plt.figure(figsize=(10, 6))
+    df.plot(kind="bar")
+    plt.title("Model Comparison")
+    plt.ylabel("Scores")
+    plt.xlabel("Models")
+    plt.xticks(rotation=0)
+    plt.legend(loc="best")
+    plt.tight_layout()
+    plt.show()
+    plt.savefig(os.path.join(ROOT, "models_comparison.png"))
+
 if __name__ == "__main__":
     ROOT = os.path.dirname(os.path.abspath(__file__))
     models = [
@@ -87,3 +109,6 @@ if __name__ == "__main__":
 
     shutil.copyfile(source_file, destination_file)
     print(f"Copied {source_file} to {destination_file}")
+
+    # Plot Comparison
+    plotComparison(models)
