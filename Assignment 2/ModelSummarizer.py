@@ -71,6 +71,7 @@ def plotComparison(models: list[dict]):
     plt.ylabel("Scores")
     plt.xlabel("Models")
     plt.xticks(rotation=0)
+    plt.gca().set_xticklabels([label.get_text().replace(" ", "\n") for label in plt.gca().get_xticklabels()])
     plt.legend(loc="best")
     plt.tight_layout()
     plt.show()
@@ -80,17 +81,17 @@ if __name__ == "__main__":
     ROOT = os.path.dirname(os.path.abspath(__file__))
     models = [
         {
-            "modelName": "Baseline - Logistic Regression",
+            "modelName": "Baseline: Logistic Regression",
             "predArray": np.load(os.path.join(ROOT, "predictions","BASELINE_y_dev_pred.npy")),
             "trueArray": np.load(os.path.join(ROOT, "predictions", "BASELINE_y_dev.npy")),
         },
         {
-            "modelName": "Deep Learning - DistilBERT",
+            "modelName": "Deep Learning: DistilBERT",
             "predArray": np.load(os.path.join(ROOT, "predictions", "DISTILBERT_pred_dev.npy")),
             "trueArray": np.load(os.path.join(ROOT, "predictions", "DISTILBERT_y_dev.npy")),
         },
         {
-            "modelName": "Deep Learning - LLM",
+            "modelName": "Deep Learning: LLM",
             "predArray": np.load(os.path.join(ROOT, "predictions", "LLM_y_dev_pred.npy")),
             "trueArray": np.load(os.path.join(ROOT, "predictions", "LLM_y_dev.npy")),
         }
