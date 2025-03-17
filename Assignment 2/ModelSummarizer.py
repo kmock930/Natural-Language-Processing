@@ -89,6 +89,11 @@ if __name__ == "__main__":
             "predArray": np.load(os.path.join(ROOT, "predictions", "DISTILBERT_pred_dev.npy")),
             "trueArray": np.load(os.path.join(ROOT, "predictions", "DISTILBERT_y_dev.npy")),
         },
+        {
+            "modelName": "Deep Learning - LLM",
+            "predArray": np.load(os.path.join(ROOT, "predictions", "LLM_y_dev_pred.npy")),
+            "trueArray": np.load(os.path.join(ROOT, "predictions", "LLM_y_dev.npy")),
+        }
     ]
     models = evaluate(models)
     bestModel = summarize(models)
@@ -100,6 +105,8 @@ if __name__ == "__main__":
             best_model_name = "baseline"
         case "Deep Learning - DistilBERT":
             best_model_name = "distilBERT"
+        case "Deep Learning - LLM":
+            best_model_name = "llm"
         case _:
             best_model_name = "baseline"
     
