@@ -18,6 +18,8 @@ All codes are in the directory named `Assignment 2`.
 * A model is dumped into the [`models` direcotory](./models).
 * Train set, Dev set, and test set data are dumped into `.npy` files in `data` directory. Please request from owners and unzip the [`data.7z`](https://uottawa-my.sharepoint.com/personal/kmock073_uottawa_ca/Documents/CSI5386%20NLP/data.7z?csf=1&web=1&e=m4fJkY).
 * Results of this model is saved into the [`content` directory](./content/).
+* Performance metrics:
+  - Validation Set: Accuracy: 0.5756, Macro F1: 0.5318, Micro F1: 0.5756
 
 ## Deep Learning based Transformer Model - Fine Tuning DistilBERT
 * This part consists of 2 notebooks: 
@@ -30,10 +32,12 @@ All codes are in the directory named `Assignment 2`.
 * It uses the entire training set and the entire dev set as the validation set during the training process.
 * The model is further trained with the tokenizer's `max_depth=32`, batch size = 4, Adam's optimizer, in 5 epochs, with Tensorflow. 
 * Results of this model is saved into the [`content` directory](./content/).
+* Performance metrics:
+  - Validation Set: Accuracy: 0.5000, Macro F1: 0.3333, Micro F1: 0.5000
 
 ## Zero-Shot Classification with Large Language Model
 * This part uses a pre-trained LLM model for zero-shot classification of machine-generated text.
-* To execute the zero-shot classification process, you may run this notebook: [`part3-llm.ipynb`](./part3-llm.ipynb).
+* To execute the zero-shot classification process, you may run this notebook: [`part_2_llm.ipynb`](./part_2_llm.ipynb).
 * It leverages the `facebook/bart-large-mnli` model with zero-shot classification capabilities.
 * The model classifies text as either "human-written" or "machine-generated" without requiring any task-specific training.
 * Text inputs are truncated to 500 tokens to manage computational requirements.
@@ -48,3 +52,6 @@ All codes are in the directory named `Assignment 2`.
 
 ## Check the Best Model and its Results
 * After executing all the programs covering the training and evaluation processes for all models, run [`ModelSummarizer.py`](./ModelSummarizer.py) to check whichever is the best model. It is determined by the combination of accuracies, macro and micro F1 scores. The results of the best model is copied to [`Results.jsonl`](./content/Results.jsonl).
+
+## Conclusion
+Our baseline model (i.e., the Logistic Regression model) outperforms other models, based on 3 metrics. 
