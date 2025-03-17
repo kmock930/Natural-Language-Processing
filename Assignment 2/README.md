@@ -31,5 +31,20 @@ All codes are in the directory named `Assignment 2`.
 * The model is further trained with the tokenizer's `max_depth=32`, batch size = 4, Adam's optimizer, in 5 epochs, with Tensorflow. 
 * Results of this model is saved into the [`content` directory](./content/).
 
+## Zero-Shot Classification with Large Language Model
+* This part uses a pre-trained LLM model for zero-shot classification of machine-generated text.
+* To execute the zero-shot classification process, you may run this notebook: [`part3-llm.ipynb`](./part3-llm.ipynb).
+* It leverages the `facebook/bart-large-mnli` model with zero-shot classification capabilities.
+* The model classifies text as either "human-written" or "machine-generated" without requiring any task-specific training.
+* Text inputs are truncated to 500 tokens to manage computational requirements.
+* Unlike the other models, this approach demonstrates how pre-trained language models can be applied to classification tasks without fine-tuning.
+* Dependencies for this implementation are in `requirements_for_llm.txt`. Install with: `pip install -r requirements_for_llm.txt`
+* Results of this model are saved into the [`content` directory](./content/).
+* The model achieved an accuracy of 50.85% on the test set and 52.06% on the validation set.
+* Performance metrics:
+  - Test Set: Accuracy: 0.5085, Macro F1: 0.4358, Micro F1: 0.5085
+  - Validation Set: Accuracy: 0.5206, Macro F1: 0.4245, Micro F1: 0.5206
+
+
 ## Check the Best Model and its Results
 * After executing all the programs covering the training and evaluation processes for all models, run [`ModelSummarizer.py`](./ModelSummarizer.py) to check whichever is the best model. It is determined by the combination of accuracies, macro and micro F1 scores. The results of the best model is copied to [`Results.jsonl`](./content/Results.jsonl).
