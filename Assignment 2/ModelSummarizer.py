@@ -24,7 +24,6 @@ def evaluate(models: list[dict]):
     
     Author: Kelvin Mock
     """
-    # Author: Your Name
     for model in models:
         model["accuracy"] = accuracy_score(model["trueArray"], model["predArray"])
         model["macroF1"] = f1_score(model["trueArray"], model["predArray"], average="macro")
