@@ -20,5 +20,6 @@ Original text is normalized before classification:
 * Removing symbols - such as hashtag # sign, the @ symbol, and URLs.
 * Removing punctuations
 * Converting the entire text to lowercase
+* Lemmatization - to replace abstract words with its base form
 * Word Tokenization
 * Removing Stopwords
