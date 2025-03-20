@@ -2,6 +2,10 @@
 All codes are in the directory named `Assignment 2`.
 ---
 
+## Check out our [**Report**](./CSI5386%20NLP%20Assignment%202%20Report%20-%20Kelvin,%20Jenifer,%20Sabrina.pdf)
+
+---
+
 ## Prerequisite Files:
 * Dataset - part of the [SemEval 2024 Task 8](https://github.com/mbzuai-nlp/SemEval2024-task8), which could also be accessed [here](https://drive.google.com/drive/folders/1CAbb3DjrOPBNm0ozVBfhvrEh9P9rAppc)
 * `subtaskA_dev_monolingual.jsonl`
