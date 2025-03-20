@@ -4,6 +4,7 @@ import os
 PATH_TO_ASSIGNMENT1 = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'Assignment 1', 'src'))
 sys.path.append(PATH_TO_ASSIGNMENT1)
 from word_tokenizer import WordTokenizer
+from lemmatizer import Lemmatizer
 
 # Code inspired by https://medium.com/@ebimsv/nlp-series-day-5-handling-emojis-strategies-and-code-implementation-0f8e77e3a25c
 def normalize_emojis(text: str) -> str:
@@ -77,6 +78,23 @@ def normalize_stopwords(text: list[str]) -> str:
     filtered_text: list[str] = [word for word in text if word not in stopwords]
     return filtered_text
 
+# Code inherited from Assignment 1
+def lemmatize(text: str) -> str:
+    """
+        Lemmatizes the input text.
+
+        Args:
+            text (str): The text to be lemmatized.
+        
+        Returns:
+            str: The lemmatized version of the input text.
+        
+        Author:
+            Kelvin Mock
+    """
+    lemmatizer = Lemmatizer()
+    return lemmatizer.lemmatize(text)
+
 def normalize(text: str) -> str:
     """
     Normalize the given text with all possible methods.
@@ -93,6 +111,9 @@ def normalize(text: str) -> str:
     text = normalize_emojis(text)
     text = normalize_symbols(text)
     text = normalize_punctuation(text)
+
+    # Lemmatize: to replace abstract words with its base form
+    text = lemmatize(text)
 
     # tokenization
     wordTokenizer = WordTokenizer()

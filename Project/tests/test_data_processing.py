@@ -101,7 +101,7 @@ class TestDataProcessing(unittest.TestCase):
             originalText=normalize(
                 "Hello, world! This is a test with emojis 😊, symbols, and punctuations@ # http://example.com"
             ),
-            targetText=["hello", "world", "test", "emojis", "symbols", "and", "punctuations"]
+            targetText=["hello", "world", "test", "emoji", "symbol", "and", "punctuation"]
         )
 
     def test_normalize_stopwords(self):

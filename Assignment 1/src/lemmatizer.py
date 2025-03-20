@@ -7,7 +7,7 @@ class Lemmatizer:
         self.lemmatizer = WordNetLemmatizer()
         nltk.download('wordnet')
         nltk.download('averaged_perceptron_tagger')
-        nltk.download('punkt', quiet=True)
+        nltk.download('punkt_tab')
 
     def get_wordnet_pos(self, word):
         """Map POS tag to first character lemmatize() accepts"""
