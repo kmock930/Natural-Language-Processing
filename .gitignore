@@ -9,3 +9,4 @@
 *.npy
 **/models/**/variables/
 .env
+*venv/
