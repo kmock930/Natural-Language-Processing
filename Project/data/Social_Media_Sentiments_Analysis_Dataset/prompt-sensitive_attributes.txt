@@ -1,0 +1,24 @@
+I have a dataset for which contains arbitrary posts on various common social media platforms.
+They are indicated either positive or negative.
+Return a list in the format: 
+Sensitive Attributes: 
+1. attribute1
+Insensitive Attributes: 
+1. attribute2
+
+Check whichever attribute from a dataset as listed below are sensitive attributes:
+Unnamed: 0.1
+Unnamed: 0
+Text
+Sentiment
+Timestamp
+User
+Platform
+Hashtags
+Retweets
+Likes
+Country
+Year
+Month
+Day
+Hour

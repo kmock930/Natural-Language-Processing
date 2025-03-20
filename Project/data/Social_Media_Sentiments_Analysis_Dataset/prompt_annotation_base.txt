@@ -1,0 +1,21 @@
+I have a dataset of arbitrary posts on various common social media platforms.
+They are indicated either positive or negative.
+With reference to the following DORIS scale,
+indicate whether the post content is suicidal.
+Represent your answer only with an integer in response.
+For example, if you think the post content is suicidal, indicate only 9 in your response.
+I will provide a batch of at most 10 posts for you you to annotate,
+one line per post.
+Please provide your annotations in the same order as the posts are provided, line-by-line.
+DORIS Scale:
+1. Depressed mood
+2. Loss of interest/pleasure
+3. Weight loss or gain
+4. Insomnia or hypersomnia
+5. Psychomotor agitation or retardation
+6. Fatigue
+7. Inappropriate guilt
+8. Decreased concentration
+9. Thoughts of suicide
+
+Prompts to decide:
