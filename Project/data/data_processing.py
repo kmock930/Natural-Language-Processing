@@ -1,4 +1,9 @@
 import emoji
+import sys
+import os
+PATH_TO_ASSIGNMENT1 = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'Assignment 1', 'src'))
+sys.path.append(PATH_TO_ASSIGNMENT1)
+from word_tokenizer import WordTokenizer
 
 # Code inspired by https://medium.com/@ebimsv/nlp-series-day-5-handling-emojis-strategies-and-code-implementation-0f8e77e3a25c
 def normalize_emojis(text: str) -> str:
@@ -50,6 +55,28 @@ def normalize_punctuation(text: str) -> str:
     text = text.lower()
     return text
 
+# Code inherited from Assignment 1
+def normalize_stopwords(text: list[str]) -> str:
+    """
+    Normalize stopwords in the given text by removing all stopwords.
+
+    Args:
+        text (list[str]): The text containing stopwords to be normalized.
+
+    Returns:
+        list[str]: The text with all stopwords removed.
+    
+    Author:
+        Kelvin Mock
+    """
+    stopwordsFilePath = os.path.join(PATH_TO_ASSIGNMENT1, 'StopWords.txt')
+    stopwordsFile = open(stopwordsFilePath, 'r')
+    stopwords:list = [line.strip() for line in stopwordsFile.readlines()]
+    stopwordsFile.close()
+    print(f"Number of Stopwords considered: {len(stopwords)}")
+    filtered_text: list[str] = [word for word in text if word not in stopwords]
+    return filtered_text
+
 def normalize(text: str) -> str:
     """
     Normalize the given text with all possible methods.
@@ -66,4 +93,11 @@ def normalize(text: str) -> str:
     text = normalize_emojis(text)
     text = normalize_symbols(text)
     text = normalize_punctuation(text)
-    return text
+
+    # tokenization
+    wordTokenizer = WordTokenizer()
+    tokenized_text:list[str] = wordTokenizer.tokenize(text=text)
+
+    tokenized_text = normalize_stopwords(tokenized_text)
+    print(tokenized_text)
+    return text 

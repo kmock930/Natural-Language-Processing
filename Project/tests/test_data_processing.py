@@ -1,13 +1,16 @@
 import unittest
 import sys
 import os
+
 PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
 sys.path.append(PATH)
-from data_processing import normalize, normalize_emojis, normalize_symbols, normalize_punctuation
+from data_processing import normalize, normalize_emojis, normalize_symbols, normalize_punctuation, normalize_stopwords
 
 class TestDataProcessing(unittest.TestCase):
     def check_matches(self, targetText, originalText):
-        for word in targetText.split():
+        if type(targetText) == str:
+            targetText = targetText.split()
+        for word in targetText:
             self.assertIn(word, originalText)
 
     def test_normalize_emojis(self):
@@ -95,10 +98,27 @@ class TestDataProcessing(unittest.TestCase):
 
     def test_hybrid_case(self):
         self.check_matches(
-            targetText="hello world this is a test with emojis symbols and punctuations",
             originalText=normalize(
                 "Hello, world! This is a test with emojis 😊, symbols, and punctuations@ # http://example.com"
-            )
+            ),
+            targetText=["hello", "world", "test", "emojis", "symbols", "and", "punctuations"]
+        )
+
+    def test_normalize_stopwords(self):
+        # no stopwords
+        self.check_matches(
+            targetText="Hello World", 
+            originalText=normalize_stopwords(["Hello", "World"])
+        )
+        # contains stopwords
+        self.check_matches(
+            targetText="Moon", 
+            originalText=normalize_stopwords(["Above", "The", "Moon"])
+        )
+        # no words
+        self.check_matches(
+            targetText="", 
+            originalText=normalize_stopwords([])
         )
 
 if __name__ == '__main__':

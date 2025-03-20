@@ -13,3 +13,12 @@ Dataset is downloaded into a .csv format from <url>https://www.kaggle.com/datase
 
 ## [**Depression Tweets**](./Depression_Tweets/)
 Dataset is downloaded into a .json format from <url>https://www.kaggle.com/datasets/senapatirajesh/depression-tweets</url>.
+
+# [**Data Processing**](data_processing.py)
+Original text is normalized before classification: 
+* Removing emojis
+* Removing symbols - such as hashtag # sign, the @ symbol, and URLs.
+* Removing punctuations
+* Converting the entire text to lowercase
+* Word Tokenization
+* Removing Stopwords
