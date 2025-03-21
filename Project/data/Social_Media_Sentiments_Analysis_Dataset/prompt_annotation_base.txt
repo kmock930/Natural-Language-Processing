@@ -8,6 +8,7 @@ I will provide a batch of at most 10 posts for you you to annotate,
 one line per post.
 Please provide your annotations in the same order as the posts are provided, line-by-line.
 DORIS Scale:
+0. Positive or Neutral
 1. Depressed mood
 2. Loss of interest/pleasure
 3. Weight loss or gain
