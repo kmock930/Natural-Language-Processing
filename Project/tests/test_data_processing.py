@@ -153,5 +153,38 @@ class TestDataProcessing(unittest.TestCase):
         for column in uniqueColumns:
             self.assertIn(column, uniqueDecodedPlatforms)
 
+    def test_reuse_fitted_encoder(self):
+        PATH_TO_DATASET = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'Social_Media_Sentiments_Analysis_Dataset'))
+        df = pd.read_csv(os.path.join(PATH_TO_DATASET, 'sentimentdataset_annotated_binary.csv'))
+        platform_series = df['Platform']
+        self.assertIsInstance(platform_series, pd.Series)
+        uniqueColumns: list[str] = platform_series.unique()
+
+        # one hot encode process
+        encoded_platform, encoder = encode_labels(platform_series)
+        uniqueEncodedLabels = np.unique(encoded_platform)
+
+        # decode labels
+        decoded_platform = decode_labels(encoder=encoder, encoded_labels=encoded_platform)
+        uniqueDecodedPlatforms = np.unique(decoded_platform)
+
+        self.assertEqual(len(uniqueColumns), len(uniqueDecodedPlatforms))
+        self.assertEqual(len(uniqueColumns), len(uniqueEncodedLabels))
+        for column in uniqueColumns:
+            self.assertIn(column, uniqueDecodedPlatforms)
+
+        # reuse the fitted encoder
+        encoded_platform, encoder = encode_labels(platform_series, encoder)
+        uniqueEncodedLabels = np.unique(encoded_platform)
+
+        # decode labels
+        decoded_platform = decode_labels(encoder=encoder, encoded_labels=encoded_platform)
+        uniqueDecodedPlatforms = np.unique(decoded_platform)
+
+        self.assertEqual(len(uniqueColumns), len(uniqueDecodedPlatforms))
+        self.assertEqual(len(uniqueColumns), len(uniqueEncodedLabels))
+        for column in uniqueColumns:
+            self.assertIn(column, uniqueDecodedPlatforms)
+
 if __name__ == '__main__':
     unittest.main()

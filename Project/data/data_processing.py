@@ -10,12 +10,13 @@ from sklearn.preprocessing import LabelEncoder # for multi-class
 import pandas as pd
 import numpy as np
 
-def encode_labels(labels: list[str] | pd.Series) -> tuple[np.ndarray, LabelEncoder]:
+def encode_labels(labels: list[str] | pd.Series, encoder: LabelEncoder = None) -> tuple[np.ndarray, LabelEncoder]:
     """
     Encode the given labels to integers.
 
     Args:
         labels (list[str] | pandas.Series): The labels to be encoded.
+        encoder (LabelEncoder, optional): The encoder to be used to encode the labels. Defaults to None.
 
     Returns:
         tuple[numpy.ndarray, LabelEncoder]: The encoded labels and the encoder used to encode the labels.
@@ -23,7 +24,7 @@ def encode_labels(labels: list[str] | pd.Series) -> tuple[np.ndarray, LabelEncod
     Author:
         Kelvin Mock
     """
-    encoder = LabelEncoder()
+    encoder = LabelEncoder() if encoder is None else encoder
     labels_reshaped = np.array(labels).reshape(-1, 1)
     encoded_labels = encoder.fit_transform(labels_reshaped)
     return encoded_labels, encoder
