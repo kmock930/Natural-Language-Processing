@@ -141,15 +141,17 @@ class TestDataProcessing(unittest.TestCase):
         uniqueColumns: list[str] = platform_series.unique()
 
         # one hot encode process
-        encoded_platform = encode_labels(platform_series)
+        encoded_platform, encoder = encode_labels(platform_series)
         uniqueEncodedLabels = np.unique(encoded_platform)
 
         # decode labels
-        decoded_platform = decode_labels(encoded_platform)
+        decoded_platform = decode_labels(encoder=encoder, encoded_labels=encoded_platform)
         uniqueDecodedPlatforms = np.unique(decoded_platform)
 
         self.assertEqual(len(uniqueColumns), len(uniqueDecodedPlatforms))
         self.assertEqual(len(uniqueColumns), len(uniqueEncodedLabels))
+        for column in uniqueColumns:
+            self.assertIn(column, uniqueDecodedPlatforms)
 
 if __name__ == '__main__':
     unittest.main()

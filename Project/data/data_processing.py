@@ -10,7 +10,7 @@ from sklearn.preprocessing import LabelEncoder # for multi-class
 import pandas as pd
 import numpy as np
 
-def encode_labels(labels: list[str] | pd.Series) -> np.ndarray:
+def encode_labels(labels: list[str] | pd.Series) -> tuple[np.ndarray, LabelEncoder]:
     """
     Encode the given labels to integers.
 
@@ -18,7 +18,7 @@ def encode_labels(labels: list[str] | pd.Series) -> np.ndarray:
         labels (list[str] | pandas.Series): The labels to be encoded.
 
     Returns:
-        numpy.ndarray: The encoded labels.
+        tuple[numpy.ndarray, LabelEncoder]: The encoded labels and the encoder used to encode the labels.
     
     Author:
         Kelvin Mock
@@ -26,13 +26,14 @@ def encode_labels(labels: list[str] | pd.Series) -> np.ndarray:
     encoder = LabelEncoder()
     labels_reshaped = np.array(labels).reshape(-1, 1)
     encoded_labels = encoder.fit_transform(labels_reshaped)
-    return encoded_labels
+    return encoded_labels, encoder
 
-def decode_labels(encoded_labels: np.ndarray) -> list[str]:
+def decode_labels(encoder: LabelEncoder, encoded_labels: np.ndarray) -> np.ndarray:
     """
     Decode the given labels from integers.
 
     Args:
+        encoder: LabelEncoder: The FITTED encoder used to encode the labels.
         encoded_labels (numpy.ndarray): The encoded labels to be decoded.
 
     Returns:
@@ -41,8 +42,6 @@ def decode_labels(encoded_labels: np.ndarray) -> list[str]:
     Author:
         Kelvin Mock
     """
-    encoder = LabelEncoder()
-    encoder.fit(np.arange(encoded_labels.shape[0]).reshape(-1, 1))
     decoded_labels = encoder.inverse_transform(encoded_labels)
     return decoded_labels
 
