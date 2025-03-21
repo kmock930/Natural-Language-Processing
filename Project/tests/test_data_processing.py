@@ -4,7 +4,7 @@ import os
 
 PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
 sys.path.append(PATH)
-from data_processing import normalize, normalize_emojis, normalize_symbols, normalize_punctuation, normalize_stopwords
+from data_processing import normalize, normalize_emojis, normalize_symbols, normalize_punctuation, normalize_stopwords, vectorize
 
 class TestDataProcessing(unittest.TestCase):
     def check_matches(self, targetText, originalText):
@@ -120,6 +120,15 @@ class TestDataProcessing(unittest.TestCase):
             targetText="", 
             originalText=normalize_stopwords([])
         )
+
+    def test_vectorize(self):
+        texts = ["Hello world!", "This is a test.", "Natural Language Processing with DistilBERT."]
+        vectorized_output = vectorize(texts)
+        MAX_TEXT_LENGTH = 32 # max length should be no more than 32
+        self.assertEqual(vectorized_output['input_ids'].shape[0], len(texts))
+        self.assertEqual(vectorized_output['attention_mask'].shape[0], len(texts))
+        self.assertLessEqual(vectorized_output['input_ids'].shape[1], MAX_TEXT_LENGTH)
+        self.assertLessEqual(vectorized_output['attention_mask'].shape[1], MAX_TEXT_LENGTH)
 
 if __name__ == '__main__':
     unittest.main()

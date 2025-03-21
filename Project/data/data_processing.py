@@ -5,6 +5,7 @@ PATH_TO_ASSIGNMENT1 = os.path.abspath(os.path.join(os.path.dirname(__file__), '.
 sys.path.append(PATH_TO_ASSIGNMENT1)
 from word_tokenizer import WordTokenizer
 from lemmatizer import Lemmatizer
+from transformers import DistilBertTokenizer
 
 # Code inspired by https://medium.com/@ebimsv/nlp-series-day-5-handling-emojis-strategies-and-code-implementation-0f8e77e3a25c
 def normalize_emojis(text: str) -> str:
@@ -94,6 +95,32 @@ def lemmatize(text: str) -> str:
     """
     lemmatizer = Lemmatizer()
     return lemmatizer.lemmatize(text)
+
+# Code inspired by Assignment 2 - Deep Learning Approach (DistilBERT)
+def vectorize(list_of_texts: list[str]):
+    """
+    Vectorize the given list of texts.
+
+    Args:
+        list_of_texts (list[str]): The list of texts to be vectorized.
+
+    Returns:
+        numpy.ndarray: The vectorized list of texts.
+    
+    Author:
+        Kelvin Mock
+    """
+    # Load the tokernizer of a pretrained model
+    # https://huggingface.co/distilbert/distilbert-base-uncased
+    tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+    encoded_input = tokenizer(
+        list_of_texts,
+        padding=True,
+        truncation=True,
+        max_length=32,
+        return_tensors='tf'
+    )
+    return encoded_input
 
 def normalize(text: str) -> str:
     """
