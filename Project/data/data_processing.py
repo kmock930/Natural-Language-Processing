@@ -6,6 +6,45 @@ sys.path.append(PATH_TO_ASSIGNMENT1)
 from word_tokenizer import WordTokenizer
 from lemmatizer import Lemmatizer
 from transformers import DistilBertTokenizer
+from sklearn.preprocessing import LabelEncoder # for multi-class
+import pandas as pd
+import numpy as np
+
+def encode_labels(labels: list[str] | pd.Series) -> np.ndarray:
+    """
+    Encode the given labels to integers.
+
+    Args:
+        labels (list[str] | pandas.Series): The labels to be encoded.
+
+    Returns:
+        numpy.ndarray: The encoded labels.
+    
+    Author:
+        Kelvin Mock
+    """
+    encoder = LabelEncoder()
+    labels_reshaped = np.array(labels).reshape(-1, 1)
+    encoded_labels = encoder.fit_transform(labels_reshaped)
+    return encoded_labels
+
+def decode_labels(encoded_labels: np.ndarray) -> list[str]:
+    """
+    Decode the given labels from integers.
+
+    Args:
+        encoded_labels (numpy.ndarray): The encoded labels to be decoded.
+
+    Returns:
+        list[str]: The decoded labels.
+    
+    Author:
+        Kelvin Mock
+    """
+    encoder = LabelEncoder()
+    encoder.fit(np.arange(encoded_labels.shape[0]).reshape(-1, 1))
+    decoded_labels = encoder.inverse_transform(encoded_labels)
+    return decoded_labels
 
 # Code inspired by https://medium.com/@ebimsv/nlp-series-day-5-handling-emojis-strategies-and-code-implementation-0f8e77e3a25c
 def normalize_emojis(text: str) -> str:
@@ -148,4 +187,4 @@ def normalize(text: str) -> str:
 
     tokenized_text = normalize_stopwords(tokenized_text)
     print(tokenized_text)
-    return text 
+    return text

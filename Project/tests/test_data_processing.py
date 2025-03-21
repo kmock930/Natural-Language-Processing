@@ -1,10 +1,13 @@
 import unittest
 import sys
 import os
+import pandas as pd
+import numpy as np
 
 PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
 sys.path.append(PATH)
-from data_processing import normalize, normalize_emojis, normalize_symbols, normalize_punctuation, normalize_stopwords, vectorize
+from data_processing import normalize, normalize_emojis, normalize_symbols, normalize_punctuation, normalize_stopwords, vectorize, encode_labels, decode_labels
+from sklearn import svm
 
 class TestDataProcessing(unittest.TestCase):
     def check_matches(self, targetText, originalText):
@@ -129,6 +132,24 @@ class TestDataProcessing(unittest.TestCase):
         self.assertEqual(vectorized_output['attention_mask'].shape[0], len(texts))
         self.assertLessEqual(vectorized_output['input_ids'].shape[1], MAX_TEXT_LENGTH)
         self.assertLessEqual(vectorized_output['attention_mask'].shape[1], MAX_TEXT_LENGTH)
+
+    def test_encode_decode(self):
+        PATH_TO_DATASET = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'Social_Media_Sentiments_Analysis_Dataset'))
+        df = pd.read_csv(os.path.join(PATH_TO_DATASET, 'sentimentdataset_annotated_binary.csv'))
+        platform_series = df['Platform']
+        self.assertIsInstance(platform_series, pd.Series)
+        uniqueColumns: list[str] = platform_series.unique()
+
+        # one hot encode process
+        encoded_platform = encode_labels(platform_series)
+        uniqueEncodedLabels = np.unique(encoded_platform)
+
+        # decode labels
+        decoded_platform = decode_labels(encoded_platform)
+        uniqueDecodedPlatforms = np.unique(decoded_platform)
+
+        self.assertEqual(len(uniqueColumns), len(uniqueDecodedPlatforms))
+        self.assertEqual(len(uniqueColumns), len(uniqueEncodedLabels))
 
 if __name__ == '__main__':
     unittest.main()
