@@ -11,3 +11,6 @@
 Given the rising popularity of social media, there is a risk of negative impacts such as cyberbullying, causing mental health distress to some users. As a result, we dived into an exploration of depression detection with the **DORIS framework** proposed by Lan X., Cheng Y., Sheng L., Gao C., and Li Y. It also forms a basis for our project which aims to perform a NLP-based model targetting suicide detection.
 
 ## [Project](./Project/CSI5386_Natural_Language_Processing_Project_Proposal.pdf)
+
+## Execution Guide
+* [**TMUX**](tmux.md) for idling long executions
