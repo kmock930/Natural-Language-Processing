@@ -130,7 +130,7 @@ def normalize(text: str) -> str:
         text (str): The text to be normalized.
 
     Returns:
-        str: The normalized text."
+        str: The normalized text.
     
     Author:
         Kelvin Mock

@@ -23,14 +23,15 @@ Original text is normalized before classification:
 * Lemmatization - to replace abstract words with its base form
 * Word Tokenization
 * Removing Stopwords
+* Vectorizing a list of texts - using DistilBertTokenizer since it caters for contextual information within texts.
 
 # Data Splitting
 The training set uses data from the following datasets:
-* Reddit
+* Twitter
 * Social Media Sentiment Analysis
 
 The validation set uses data from the following dataset:
-* Twitter
+* Reddit
 
 The test set uses data from the following dataset:
 * Depression Tweet

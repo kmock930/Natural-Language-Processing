@@ -122,7 +122,7 @@ class TestDataProcessing(unittest.TestCase):
         )
 
     def test_vectorize(self):
-        texts = ["Hello world!", "This is a test.", "Natural Language Processing with DistilBERT."]
+        texts = ["Hello world!", "This is a test.", "Natural Language Processing with DistilBERT.", "😊"]
         vectorized_output = vectorize(texts)
         MAX_TEXT_LENGTH = 32 # max length should be no more than 32
         self.assertEqual(vectorized_output['input_ids'].shape[0], len(texts))
