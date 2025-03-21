@@ -5,9 +5,18 @@ from nltk.corpus import wordnet
 class Lemmatizer:
     def __init__(self):
         self.lemmatizer = WordNetLemmatizer()
+        
+        # Run on Linux
+        nltk.download('averaged_perceptron_tagger_eng')
+        nltk.download('punkt')
         nltk.download('wordnet')
-        nltk.download('averaged_perceptron_tagger')
-        nltk.download('punkt_tab')
+        nltk.download('omw-1.4')
+        nltk.download('stopwords')
+
+        # Run on Windows
+        #nltk.download('wordnet')
+        #nltk.download('averaged_perceptron_tagger')
+        #nltk.download('punkt_tab')
 
     def get_wordnet_pos(self, word):
         """Map POS tag to first character lemmatize() accepts"""
