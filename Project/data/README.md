@@ -40,3 +40,24 @@ The test set uses data from the following dataset:
 We consider a binary classification problem with the following labels and interpretation:
 * 0: non-suicidal
 * 1: suicidal
+
+# Resulting Vectors
+## Text Embedding Vector
+**(Title, Post Content, Hashtags)**
+* Shape: (9851, 3, 1)
+## Metadata Embedding Vector
+* Post Category
+* Number of Comments
+* Hide Score
+* Upvote Ratio
+* Ups
+* Score
+* Edited
+* no_follow
+* over_18
+* Created Date / Timestamp
+* Country
+* Platform
+* Sentiment
+* Reposts
+* Number of Likes

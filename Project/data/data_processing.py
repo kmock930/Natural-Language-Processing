@@ -25,7 +25,7 @@ def encode_labels(labels: list[str] | pd.Series, encoder: LabelEncoder = None) -
         Kelvin Mock
     """
     encoder = LabelEncoder() if encoder is None else encoder
-    labels_reshaped = np.array(labels).reshape(-1, 1)
+    labels_reshaped = np.array(labels)
     encoded_labels = encoder.fit_transform(labels_reshaped)
     return encoded_labels, encoder
 
