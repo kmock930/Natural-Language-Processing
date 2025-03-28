@@ -45,7 +45,7 @@ We consider a binary classification problem with the following labels and interp
 Access the generated data [here](https://uottawa-my.sharepoint.com/personal/kmock073_uottawa_ca/_layouts/15/guestaccess.aspx?share=ElzIFCkzaRpPtgx9TcMm5TEBW_Qxcp7H2v0toRTSLcsCpg)
 ## Text Embedding Vector
 **(Title, Post Content, Hashtags)**
-* Shape: (9851, 3, 1)
+* Shape: (n, 3, 768), where n = number of records in a particular set. 
 ## Metadata Embedding Vector
 * Post Category
 * Number of Comments

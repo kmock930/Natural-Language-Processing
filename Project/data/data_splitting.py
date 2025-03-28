@@ -3,6 +3,10 @@ import pandas as pd
 import numpy as np
 from data_processing import normalize, vectorize, encode_labels
 import joblib
+import tensorflow as tf
+from transformers import TFDistilBertModel
+# Load the Model (via inference) to obtain embeddings - encoded input AND attention masks
+model = TFDistilBertModel.from_pretrained('distilbert-base-uncased')
 
 # ==== DIRECTORY SETUP ====
 folders = [
@@ -16,26 +20,22 @@ for folder in folders:
     os.makedirs(folder, exist_ok=True)
 
 # ==== TEXT VECTORIZATION HELPERS ====
-def mean_pool(encoded_tensor):
-    input_ids = encoded_tensor['input_ids'].numpy()
-    attention_mask = encoded_tensor['attention_mask'].numpy()
-    masked_input = input_ids * attention_mask
-    lengths = np.maximum(np.sum(attention_mask, axis=1), 1)
-    return np.sum(masked_input, axis=1) / lengths[:, None]
-
 def vectorize_text_field(text: str) -> np.ndarray:
     if not isinstance(text, str):
         text = ""
-    tokenized = vectorize([text])
-    pooled = mean_pool(tokenized)
-    return pooled[0]
+    inputs = vectorize([text])  # returns input_ids and attention_mask
+    outputs = model(inputs)
+    mask = tf.cast(tf.expand_dims(inputs['attention_mask'], axis=-1), dtype=outputs.last_hidden_state.dtype)
+    masked = outputs.last_hidden_state * mask
+    pooled = tf.reduce_sum(masked, axis=1) / tf.maximum(tf.reduce_sum(mask, axis=1), 1)
+    return pooled[0].numpy()
 
 def build_text_embedding_vector(title, content, hashtags):
     return np.stack([
         vectorize_text_field(normalize(title)),
         vectorize_text_field(normalize(content)),
         vectorize_text_field(normalize(hashtags))
-    ])  # (3, 15)
+    ])  # (3, 768)
 
 # ==== METADATA ENCODING ====
 def encode_metadata(df: pd.DataFrame, exclude_cols: list[str], encoder=None):
@@ -52,7 +52,9 @@ def encode_metadata(df: pd.DataFrame, exclude_cols: list[str], encoder=None):
                 label_array, encoder = encode_labels([val], encoder)
                 row_data.append(float(label_array[0]))
         encoded_rows.append(row_data)
-    return np.array(encoded_rows), encoder
+    metadata_array = np.array(encoded_rows)
+    metadata_array = np.expand_dims(metadata_array, axis=-1)  # (n, num_features, 1)
+    return metadata_array, encoder
 
 # ==== PROCESS AND SAVE ====
 def process_and_save(split: str, text_array, meta_full, meta_sensitive, meta_nonsensitive, labels):
@@ -202,10 +204,9 @@ def process_columns(dataset: str):
             sensitive_metadata, _ = encode_metadata(df_sensitive, exclude_cols=excluded_columns, encoder=encoder)
             nonsensitive_metadata, _ = encode_metadata(df_nonsensitive, exclude_cols=excluded_columns, encoder=encoder)
 
-            train_set_metadata_full.extend(full_metadata.tolist())
-            train_set_metadata_sensitive.extend(sensitive_metadata.tolist())
-            train_set_metadata_nonsensitive.extend(nonsensitive_metadata.tolist())
-
+            train_set_metadata_full.append(full_metadata)
+            train_set_metadata_sensitive.append(sensitive_metadata)
+            train_set_metadata_nonsensitive.append(nonsensitive_metadata)
         case "Social_Media_Sentiments_Analysis_Dataset":
             # Exclude "Text" and "Hashtags" columns, encode all other categorical features
             excluded_columns = ['Text', 'Hashtags']
@@ -213,9 +214,9 @@ def process_columns(dataset: str):
             sensitive_metadata, _ = encode_metadata(df_sensitive, exclude_cols=excluded_columns, encoder=encoder)
             nonsensitive_metadata, _ = encode_metadata(df_nonsensitive, exclude_cols=excluded_columns, encoder=encoder)
 
-            train_set_metadata_full.extend(full_metadata.tolist())
-            train_set_metadata_sensitive.extend(sensitive_metadata.tolist())
-            train_set_metadata_nonsensitive.extend(nonsensitive_metadata.tolist())
+            train_set_metadata_full.append(full_metadata)
+            train_set_metadata_sensitive.append(sensitive_metadata)
+            train_set_metadata_nonsensitive.append(nonsensitive_metadata)
         case "Reddit_SuicideWatch":
             # Exclude "selftext" and "title" columns, encode all other categorical features
             excluded_columns = ['title', 'selftext']
@@ -223,9 +224,9 @@ def process_columns(dataset: str):
             sensitive_metadata, _ = encode_metadata(df_sensitive, exclude_cols=excluded_columns, encoder=encoder)
             nonsensitive_metadata, _ = encode_metadata(df_nonsensitive, exclude_cols=excluded_columns, encoder=encoder)
 
-            val_set_metadata_full.extend(full_metadata.tolist())
-            val_set_metadata_sensitive.extend(sensitive_metadata.tolist())
-            val_set_metadata_nonsensitive.extend(nonsensitive_metadata.tolist())
+            val_set_metadata_full.append(full_metadata)
+            val_set_metadata_sensitive.append(sensitive_metadata)
+            val_set_metadata_nonsensitive.append(nonsensitive_metadata)
         case "Depression_Tweets":
             # Exclude "content" column, encode all other categorical features
             excluded_columns = ['content']
@@ -233,9 +234,9 @@ def process_columns(dataset: str):
             sensitive_metadata, _ = encode_metadata(df_sensitive, exclude_cols=excluded_columns, encoder=encoder)
             nonsensitive_metadata, _ = encode_metadata(df_nonsensitive, exclude_cols=excluded_columns, encoder=encoder)
             
-            test_set_metadata_full.extend(full_metadata.tolist())
-            test_set_metadata_sensitive.extend(sensitive_metadata.tolist())
-            test_set_metadata_nonsensitive.extend(nonsensitive_metadata.tolist())
+            test_set_metadata_full.append(full_metadata)
+            test_set_metadata_sensitive.append(sensitive_metadata)
+            test_set_metadata_nonsensitive.append(nonsensitive_metadata)
 
     # Save the LabelEncoder model
     if (encoder is not None):
@@ -286,17 +287,17 @@ test_set_text = np.array(test_set_text)
 y_train = np.array(y_train)
 y_val = np.array(y_val)
 
-train_set_metadata_full = np.vstack(train_set_metadata_full)
-train_set_metadata_sensitive = np.vstack(train_set_metadata_sensitive)
-train_set_metadata_nonsensitive = np.vstack(train_set_metadata_nonsensitive)
+train_set_metadata_full = np.concatenate(train_set_metadata_full, axis=0) 
+train_set_metadata_sensitive = np.concatenate(train_set_metadata_sensitive, axis=0)
+train_set_metadata_nonsensitive = np.concatenate(train_set_metadata_nonsensitive, axis=0)
 
-val_set_metadata_full = np.vstack(val_set_metadata_full)
-val_set_metadata_sensitive = np.vstack(val_set_metadata_sensitive)
-val_set_metadata_nonsensitive = np.vstack(val_set_metadata_nonsensitive)
+val_set_metadata_full = np.concatenate(val_set_metadata_full, axis=0)
+val_set_metadata_sensitive = np.concatenate(val_set_metadata_sensitive, axis=0)
+val_set_metadata_nonsensitive = np.concatenate(val_set_metadata_nonsensitive, axis=0)
 
-test_set_metadata_full = np.vstack(test_set_metadata_full)
-test_set_metadata_sensitive = np.vstack(test_set_metadata_sensitive)
-test_set_metadata_nonsensitive = np.vstack(test_set_metadata_nonsensitive)
+test_set_metadata_full = np.concatenate(test_set_metadata_full, axis=0)
+test_set_metadata_sensitive = np.concatenate(test_set_metadata_sensitive, axis=0)
+test_set_metadata_nonsensitive = np.concatenate(test_set_metadata_nonsensitive, axis=0)
 
 # Save the arrays to .npy files
 # TRAIN: Twitter Suicidal Data, Social Media Sentiments Analysis Dataset
