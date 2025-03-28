@@ -42,6 +42,7 @@ We consider a binary classification problem with the following labels and interp
 * 1: suicidal
 
 # Resulting Vectors
+Access the generated data [here](https://uottawa-my.sharepoint.com/personal/kmock073_uottawa_ca/_layouts/15/guestaccess.aspx?share=ElzIFCkzaRpPtgx9TcMm5TEBW_Qxcp7H2v0toRTSLcsCpg)
 ## Text Embedding Vector
 **(Title, Post Content, Hashtags)**
 * Shape: (9851, 3, 1)
