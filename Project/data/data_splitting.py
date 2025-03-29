@@ -1,3 +1,9 @@
+# ##################
+# This script splits the datasets into train, validation, and test sets.
+# It vectorizes texts using the tokenizer from the DistilBERT model and encodes metadata features
+# Author: Kelvin Mock
+# ##################
+
 import os
 import pandas as pd
 import numpy as np
@@ -24,7 +30,7 @@ def vectorize_text_field(text: str) -> np.ndarray:
     if not isinstance(text, str):
         text = ""
     inputs = vectorize([text])  # returns input_ids and attention_mask
-    outputs = model(inputs)
+    outputs = model(inputs) # vectorize with the pretrained DistilBERT model
     mask = tf.cast(tf.expand_dims(inputs['attention_mask'], axis=-1), dtype=outputs.last_hidden_state.dtype)
     masked = outputs.last_hidden_state * mask
     pooled = tf.reduce_sum(masked, axis=1) / tf.maximum(tf.reduce_sum(mask, axis=1), 1)
