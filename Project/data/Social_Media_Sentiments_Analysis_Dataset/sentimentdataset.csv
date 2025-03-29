@@ -1,4 +1,4 @@
-,Unnamed: 0,Text,Sentiment,Timestamp,User,Platform,Hashtags,Retweets,Likes,Country,Year,Month,Day,Hour
+Unnamed: 0.1,Unnamed: 0,Text,Sentiment,Timestamp,User,Platform,Hashtags,Retweets,Likes,Country,Year,Month,Day,Hour
 0,0, Enjoying a beautiful day at the park!              , Positive  ,2023-01-15 12:30:00, User123      , Twitter  , #Nature #Park                            ,15.0,30.0, USA      ,2023,1,15,12
 1,1, Traffic was terrible this morning.                 , Negative  ,2023-01-15 08:45:00, CommuterX    , Twitter  , #Traffic #Morning                        ,5.0,10.0, Canada   ,2023,1,15,8
 2,2, Just finished an amazing workout! 💪               , Positive  ,2023-01-15 15:45:00, FitnessFan   , Instagram , #Fitness #Workout                        ,20.0,40.0, USA        ,2023,1,15,15

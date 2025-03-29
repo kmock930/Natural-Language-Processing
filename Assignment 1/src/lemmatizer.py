@@ -5,9 +5,14 @@ from nltk.corpus import wordnet
 class Lemmatizer:
     def __init__(self):
         self.lemmatizer = WordNetLemmatizer()
-        nltk.download('wordnet')
-        nltk.download('averaged_perceptron_tagger')
-        nltk.download('punkt', quiet=True)
+        
+        linux_packages = ['averaged_perceptron_tagger_eng', 'punkt', 'wordnet', 'omw-1.4', 'stopwords']
+        windows_packages = ['wordnet', 'averaged_perceptron_tagger', 'punkt_tab']
+        for resource in linux_packages:
+            try:
+                nltk.data.find(f'taggers/{resource}') if resource.startswith('averaged_perceptron_tagger') else nltk.data.find(f'corpora/{resource}')
+            except LookupError:
+                nltk.download(resource)
 
     def get_wordnet_pos(self, word):
         """Map POS tag to first character lemmatize() accepts"""

@@ -1,7 +1,7 @@
 # Datasets
 This project intends to collect necessary data (for modeling) from a combination of **web scraping** which adheres to ethical considerations as well as **publicly-available datasets**.
 
-## [Reddit SuicideWatch Posts](./Reddit_SuicideWatch/)
+## [**Reddit SuicideWatch Posts**](./Reddit_SuicideWatch/)
 **Web Scraping**: By launching a web request to Reddit, we load a list of 100 records of posts from `curl https://reddit.com/r/SuicideWatch/new.json?limit=100` which is in the subreddit (i.e., category) named "SuicideWatch". Note that this request could only fetch 100 records at a time. 
 Raw data are loaded into `reddit_suicidewatch.json`.
 
@@ -13,3 +13,54 @@ Dataset is downloaded into a .csv format from <url>https://www.kaggle.com/datase
 
 ## [**Depression Tweets**](./Depression_Tweets/)
 Dataset is downloaded into a .json format from <url>https://www.kaggle.com/datasets/senapatirajesh/depression-tweets</url>.
+
+# [**Data Processing**](data_processing.py)
+Original text is normalized before classification: 
+* Removing emojis
+* Removing symbols - such as hashtag # sign, the @ symbol, and URLs.
+* Removing punctuations
+* Converting the entire text to lowercase
+* Lemmatization - to replace abstract words with its base form
+* Word Tokenization
+* Removing Stopwords
+* Vectorizing a list of texts - using DistilBertTokenizer since it caters for contextual information within texts.
+
+# Data Splitting
+The training set uses data from the following datasets:
+* Twitter
+* Social Media Sentiment Analysis
+
+The validation set uses data from the following dataset:
+* Reddit
+
+The test set uses data from the following dataset:
+* Depression Tweet
+
+# Labeling:
+We consider a binary classification problem with the following labels and interpretation:
+* 0: non-suicidal
+* 1: suicidal
+
+# Resulting Vectors
+Access the generated data [here](https://uottawa-my.sharepoint.com/personal/kmock073_uottawa_ca/_layouts/15/guestaccess.aspx?share=ElzIFCkzaRpPtgx9TcMm5TEBW_Qxcp7H2v0toRTSLcsCpg)
+
+* Note: The [data splitting](./data_splitting.py) and [processing](./data_processing.py) are vectorizing texts using DistilBERT's tokenizer, which is believed to preserve contextual semantic meanings very well. However, by running the scripts `data_processing.py` and `data_splitting.py` (in sequence), it does not guarantee to work with other types of models like the baseline nor the LLM-based approach. This method is specifically tailored for the 2nd model - fine-tuning a a pre-trained DistilBERT model.
+## Text Embedding Vector
+**(Title, Post Content, Hashtags)**
+* Shape: (n, 3, 768), where n = number of records in a particular set. 
+## Metadata Embedding Vector
+* Post Category
+* Number of Comments
+* Hide Score
+* Upvote Ratio
+* Ups
+* Score
+* Edited
+* no_follow
+* over_18
+* Created Date / Timestamp
+* Country
+* Platform
+* Sentiment
+* Reposts
+* Number of Likes
