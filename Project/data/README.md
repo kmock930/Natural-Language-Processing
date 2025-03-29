@@ -43,6 +43,8 @@ We consider a binary classification problem with the following labels and interp
 
 # Resulting Vectors
 Access the generated data [here](https://uottawa-my.sharepoint.com/personal/kmock073_uottawa_ca/_layouts/15/guestaccess.aspx?share=ElzIFCkzaRpPtgx9TcMm5TEBW_Qxcp7H2v0toRTSLcsCpg)
+
+* Note: The [data splitting](./data_splitting.py) and [processing](./data_processing.py) are vectorizing texts using DistilBERT's tokenizer, which is believed to preserve contextual semantic meanings very well. However, by running the scripts `data_processing.py` and `data_splitting.py` (in sequence), it does not guarantee to work with other types of models like the baseline nor the LLM-based approach. This method is specifically tailored for the 2nd model - fine-tuning a a pre-trained DistilBERT model.
 ## Text Embedding Vector
 **(Title, Post Content, Hashtags)**
 * Shape: (n, 3, 768), where n = number of records in a particular set. 
