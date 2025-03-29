@@ -1,6 +1,11 @@
 # ##################
 # This script splits the datasets into train, validation, and test sets.
 # It vectorizes texts using the tokenizer from the DistilBERT model and encodes metadata features
+# Codes in this script are executed on a Linux-based virtual machine with the following **computational requirements**:
+# GPU:  RTX2080 Super
+# vCPU:  8 
+# CPU Memory: 48GB 
+# GPU Memory: 8GB
 # Author: Kelvin Mock
 # ##################
 
