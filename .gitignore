@@ -10,3 +10,4 @@
 **/models/**/variables/
 .env
 *venv/
+**models/
