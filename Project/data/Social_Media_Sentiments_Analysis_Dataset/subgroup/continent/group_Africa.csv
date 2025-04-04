@@ -1,0 +1,8 @@
+Unnamed: 0.1,Unnamed: 0,Text,Sentiment,Timestamp,User,Platform,Hashtags,Retweets,Likes,Country,Year,Month,Day,Hour,country_clean,continent
+383,387,A sense of wonder at the vastness of the cosmos on a stargazing night.,Wonder,2018-07-08 23:00:00,CosmosExplorer,Instagram,#Wonder #StargazingAdventure,40.0,80.0,South Africa,2018,7,8,23,South Africa,Africa
+403,407,Awe-inspired by the vastness of the cosmos on a stargazing night.,Wonder,2018-07-08 23:00:00,CosmosExplorer,Instagram,#Wonder #StargazingAdventure,40.0,80.0,South Africa,2018,7,8,23,South Africa,Africa
+433,437,"Heartache deepens, a solitary journey through the abyss of despair.",Despair,2022-08-18 22:00:00,SolitaryDescent,Instagram,#Despair #AbyssOfHeartache,40.0,80.0,South Africa,2022,8,18,22,South Africa,Africa
+451,455,"Suffocating in the silence of solitude, where echoes of laughter once thrived.",Isolation,2022-05-20 20:30:00,EchoedLaughter,Instagram,#Isolation #SilentSolitude,30.0,60.0,South Africa,2022,5,20,20,South Africa,Africa
+480,484,"In the garden of friendships, each bloom a testament to the beauty of camaraderie.",Friendship,2018-08-28 16:00:00,FriendshipGarden,Instagram,#Friendship #CamaraderieBlooms,30.0,60.0,South Africa,2018,8,28,16,South Africa,Africa
+490,494,"In the carnival of emotions, the rollercoaster of thrill sends the heart on a wild ride.",Thrill,2019-03-28 15:30:00,EmotionCarnival,Instagram,#Thrill #WildHeartRide,35.0,70.0,South Africa,2019,3,28,15,South Africa,Africa
+544,548,"Witnessing a record-breaking marathon, spectators are filled with awe and admiration for the endurance and dedication of the runners.",Admiration,2021-11-07 17:30:00,MarathonSpectatorRecordBreaking,Instagram,#Admiration #MarathonRecords,22.0,45.0,Kenya,2021,11,7,17,Kenya,Africa
