@@ -17,7 +17,7 @@ Given the rising popularity of social media, there is a risk of negative impacts
 Our project analyzes suicidal intentions from popular social media platforms, and trains the best model for suicidal detection. Here are the models that we've used. 
 
 ### Fine-Tuning a Deep Learning based Transformer - DistilBERT
-![Project - Deep Learning based DistilBERT Model's Results](./Project/NLP%20Training/deep_learning_distilBERT_results.png)
+![Project - Deep Learning based DistilBERT Model's Results](deep_learning_customized_results.png)
 
 ## Execution Guide
 * [**TMUX**](tmux.md) for idling long executions
