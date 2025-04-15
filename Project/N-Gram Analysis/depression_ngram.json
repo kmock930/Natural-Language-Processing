@@ -1,0 +1,112 @@
+[
+    {
+        "content": "Yea typically",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "typically crying",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "crying sign",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "sign uncontrolled",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "uncontrolled depression",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "depression struggled",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "struggled life'",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "Yea typically crying",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "typically crying sign",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "crying sign uncontrolled",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "sign uncontrolled depression",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "uncontrolled depression struggled",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "depression struggled life'",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "Yea typically crying sign",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "typically crying sign uncontrolled",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "crying sign uncontrolled depression",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "sign uncontrolled depression struggled",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "uncontrolled depression struggled life'",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "Yea typically crying sign uncontrolled",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "typically crying sign uncontrolled depression",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "crying sign uncontrolled depression struggled",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "sign uncontrolled depression struggled life'",
+        "N-gram": 5,
+        "frequency": 1
+    }
+]

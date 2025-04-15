@@ -1,0 +1,402 @@
+[
+    {
+        "content": "life meaningless",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "meaningless life",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "life badly",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "badly life",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "life completely",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "completely empty",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "empty dont",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "dont create",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "create meaning",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "meaning creating",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "creating meaning",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "meaning pain",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "pain hold",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "hold back",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "back urge",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "urge run",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "run car",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "car head",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "head person",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "person coming",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "life meaningless life",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "meaningless life badly",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "life badly life",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "badly life completely",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "life completely empty",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "completely empty dont",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "empty dont create",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "dont create meaning",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "create meaning creating",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "meaning creating meaning",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "creating meaning pain",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "meaning pain hold",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "pain hold back",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "hold back urge",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "back urge run",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "urge run car",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "run car head",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "car head person",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "head person coming",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "person coming opposite",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "life meaningless life badly",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "meaningless life badly life",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "life badly life completely",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "badly life completely empty",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "life completely empty dont",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "completely empty dont create",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "empty dont create meaning",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "dont create meaning creating",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "create meaning creating meaning",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "meaning creating meaning pain",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "creating meaning pain hold",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "meaning pain hold back",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "pain hold back urge",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "hold back urge run",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "back urge run car",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "urge run car head",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "run car head person",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "car head person coming",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "head person coming opposite",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "person coming opposite feeling",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "life meaningless life badly life",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "meaningless life badly life completely",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "life badly life completely empty",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "badly life completely empty dont",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "life completely empty dont create",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "completely empty dont create meaning",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "empty dont create meaning creating",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "dont create meaning creating meaning",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "create meaning creating meaning pain",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "meaning creating meaning pain hold",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "creating meaning pain hold back",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "meaning pain hold back urge",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "pain hold back urge run",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "hold back urge run car",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "back urge run car head",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "urge run car head person",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "run car head person coming",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "car head person coming opposite",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "head person coming opposite feeling",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "person coming opposite feeling jealous",
+        "N-gram": 5,
+        "frequency": 1
+    }
+]

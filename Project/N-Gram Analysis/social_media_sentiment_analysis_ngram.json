@@ -1,0 +1,17 @@
+[
+    {
+        "content": "Enjoying beautiful",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "beautiful park!",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "Enjoying beautiful park!",
+        "N-gram": 3,
+        "frequency": 1
+    }
+]

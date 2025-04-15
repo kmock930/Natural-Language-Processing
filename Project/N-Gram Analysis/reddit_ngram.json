@@ -1,0 +1,402 @@
+[
+    {
+        "content": "I left",
+        "N-gram": 2,
+        "frequency": 2
+    },
+    {
+        "content": "Help? I",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "I reached",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "reached point",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "point today.",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "today. I",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "I struggling",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "struggling lot",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "lot financially",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "financially trying",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "trying support",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "support kids.",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "kids. I",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "I lose",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "lose house.",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "house. I",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "I work",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "work full",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "full I",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "I it's",
+        "N-gram": 2,
+        "frequency": 1
+    },
+    {
+        "content": "Help? I reached",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "I reached point",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "reached point today.",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "point today. I",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "today. I struggling",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "I struggling lot",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "struggling lot financially",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "lot financially trying",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "financially trying support",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "trying support kids.",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "support kids. I",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "kids. I lose",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "I lose house.",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "lose house. I",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "house. I work",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "I work full",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "work full I",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "full I it's",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "I it's enough.",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "it's enough. I",
+        "N-gram": 3,
+        "frequency": 1
+    },
+    {
+        "content": "Help? I reached point",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "I reached point today.",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "reached point today. I",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "point today. I struggling",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "today. I struggling lot",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "I struggling lot financially",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "struggling lot financially trying",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "lot financially trying support",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "financially trying support kids.",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "trying support kids. I",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "support kids. I lose",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "kids. I lose house.",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "I lose house. I",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "lose house. I work",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "house. I work full",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "I work full I",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "work full I it's",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "full I it's enough.",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "I it's enough. I",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "it's enough. I plan",
+        "N-gram": 4,
+        "frequency": 1
+    },
+    {
+        "content": "Help? I reached point today.",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "I reached point today. I",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "reached point today. I struggling",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "point today. I struggling lot",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "today. I struggling lot financially",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "I struggling lot financially trying",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "struggling lot financially trying support",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "lot financially trying support kids.",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "financially trying support kids. I",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "trying support kids. I lose",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "support kids. I lose house.",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "kids. I lose house. I",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "I lose house. I work",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "lose house. I work full",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "house. I work full I",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "I work full I it's",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "work full I it's enough.",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "full I it's enough. I",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "I it's enough. I plan",
+        "N-gram": 5,
+        "frequency": 1
+    },
+    {
+        "content": "it's enough. I plan today",
+        "N-gram": 5,
+        "frequency": 1
+    }
+]
