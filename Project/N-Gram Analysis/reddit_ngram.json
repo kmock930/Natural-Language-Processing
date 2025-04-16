@@ -2,401 +2,881 @@
     {
         "content": "I left",
         "N-gram": 2,
-        "frequency": 2
+        "frequency": 2,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "Help? I",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 1.0,
+        "negative": 0.0,
+        "neutral": 0.0
     },
     {
         "content": "I reached",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.1027,
+        "positive": 1.0,
+        "negative": 0.0,
+        "neutral": 0.0
     },
     {
         "content": "reached point",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.1027,
+        "positive": 0.583,
+        "negative": 0.0,
+        "neutral": 0.417
     },
     {
         "content": "point today.",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "today. I",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "I struggling",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 1.0,
+        "neutral": 0.0
     },
     {
         "content": "struggling lot",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.737,
+        "neutral": 0.263
     },
     {
         "content": "lot financially",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "financially trying",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "trying support",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 0.73,
+        "negative": 0.0,
+        "neutral": 0.27
     },
     {
         "content": "support kids.",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 0.73,
+        "negative": 0.0,
+        "neutral": 0.27
     },
     {
         "content": "kids. I",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "I lose",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 1.0,
+        "neutral": 0.0
     },
     {
         "content": "lose house.",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 0.73,
+        "neutral": 0.27
     },
     {
         "content": "house. I",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "I work",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "work full",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "full I",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "I it's",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "Help? I reached",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4767,
+        "positive": 1.0,
+        "negative": 0.0,
+        "neutral": 0.0
     },
     {
         "content": "I reached point",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.1027,
+        "positive": 0.583,
+        "negative": 0.0,
+        "neutral": 0.417
     },
     {
         "content": "reached point today.",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.1027,
+        "positive": 0.412,
+        "negative": 0.0,
+        "neutral": 0.588
     },
     {
         "content": "point today. I",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "today. I struggling",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.737,
+        "neutral": 0.263
     },
     {
         "content": "I struggling lot",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.737,
+        "neutral": 0.263
     },
     {
         "content": "struggling lot financially",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.583,
+        "neutral": 0.417
     },
     {
         "content": "lot financially trying",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "financially trying support",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 0.574,
+        "negative": 0.0,
+        "neutral": 0.426
     },
     {
         "content": "trying support kids.",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 0.574,
+        "negative": 0.0,
+        "neutral": 0.426
     },
     {
         "content": "support kids. I",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 0.73,
+        "negative": 0.0,
+        "neutral": 0.27
     },
     {
         "content": "kids. I lose",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 0.73,
+        "neutral": 0.27
     },
     {
         "content": "I lose house.",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 0.73,
+        "neutral": 0.27
     },
     {
         "content": "lose house. I",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 0.73,
+        "neutral": 0.27
     },
     {
         "content": "house. I work",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "I work full",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "work full I",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "full I it's",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "I it's enough.",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.5,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "it's enough. I",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.5,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "Help? I reached point",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4767,
+        "positive": 0.804,
+        "negative": 0.0,
+        "neutral": 0.196
     },
     {
         "content": "I reached point today.",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.1027,
+        "positive": 0.412,
+        "negative": 0.0,
+        "neutral": 0.588
     },
     {
         "content": "reached point today. I",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.1027,
+        "positive": 0.412,
+        "negative": 0.0,
+        "neutral": 0.588
     },
     {
         "content": "point today. I struggling",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.583,
+        "neutral": 0.417
     },
     {
         "content": "today. I struggling lot",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.583,
+        "neutral": 0.417
     },
     {
         "content": "I struggling lot financially",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.583,
+        "neutral": 0.417
     },
     {
         "content": "struggling lot financially trying",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.483,
+        "neutral": 0.517
     },
     {
         "content": "lot financially trying support",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 0.474,
+        "negative": 0.0,
+        "neutral": 0.526
     },
     {
         "content": "financially trying support kids.",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 0.474,
+        "negative": 0.0,
+        "neutral": 0.526
     },
     {
         "content": "trying support kids. I",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 0.574,
+        "negative": 0.0,
+        "neutral": 0.426
     },
     {
         "content": "support kids. I lose",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.422,
+        "negative": 0.422,
+        "neutral": 0.156
     },
     {
         "content": "kids. I lose house.",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 0.574,
+        "neutral": 0.426
     },
     {
         "content": "I lose house. I",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 0.73,
+        "neutral": 0.27
     },
     {
         "content": "lose house. I work",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 0.574,
+        "neutral": 0.426
     },
     {
         "content": "house. I work full",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "I work full I",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "work full I it's",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "full I it's enough.",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.175,
+        "subjectivity": 0.525,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "I it's enough. I",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.5,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "it's enough. I plan",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.5,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "Help? I reached point today.",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4767,
+        "positive": 0.672,
+        "negative": 0.0,
+        "neutral": 0.328
     },
     {
         "content": "I reached point today. I",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.1027,
+        "positive": 0.412,
+        "negative": 0.0,
+        "neutral": 0.588
     },
     {
         "content": "reached point today. I struggling",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.34,
+        "positive": 0.226,
+        "negative": 0.452,
+        "neutral": 0.323
     },
     {
         "content": "point today. I struggling lot",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.483,
+        "neutral": 0.517
     },
     {
         "content": "today. I struggling lot financially",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.483,
+        "neutral": 0.517
     },
     {
         "content": "I struggling lot financially trying",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4215,
+        "positive": 0.0,
+        "negative": 0.483,
+        "neutral": 0.517
     },
     {
         "content": "struggling lot financially trying support",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.0258,
+        "positive": 0.318,
+        "negative": 0.329,
+        "neutral": 0.353
     },
     {
         "content": "lot financially trying support kids.",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 0.403,
+        "negative": 0.0,
+        "neutral": 0.597
     },
     {
         "content": "financially trying support kids. I",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.4019,
+        "positive": 0.474,
+        "negative": 0.0,
+        "neutral": 0.526
     },
     {
         "content": "trying support kids. I lose",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.365,
+        "negative": 0.365,
+        "neutral": 0.27
     },
     {
         "content": "support kids. I lose house.",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.365,
+        "negative": 0.365,
+        "neutral": 0.27
     },
     {
         "content": "kids. I lose house. I",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 0.574,
+        "neutral": 0.426
     },
     {
         "content": "I lose house. I work",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 0.574,
+        "neutral": 0.426
     },
     {
         "content": "lose house. I work full",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": -0.4019,
+        "positive": 0.0,
+        "negative": 0.474,
+        "neutral": 0.526
     },
     {
         "content": "house. I work full I",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "I work full I it's",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.35,
+        "subjectivity": 0.55,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "work full I it's enough.",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.175,
+        "subjectivity": 0.525,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "full I it's enough. I",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.175,
+        "subjectivity": 0.525,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "I it's enough. I plan",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.5,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "it's enough. I plan today",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.5,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     }
 ]

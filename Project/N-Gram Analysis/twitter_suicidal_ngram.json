@@ -2,401 +2,881 @@
     {
         "content": "life meaningless",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.5,
+        "subjectivity": 1.0,
+        "polarity_VADER": -0.4404,
+        "positive": 0.0,
+        "negative": 0.744,
+        "neutral": 0.256
     },
     {
         "content": "meaningless life",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.5,
+        "subjectivity": 1.0,
+        "polarity_VADER": -0.4404,
+        "positive": 0.0,
+        "negative": 0.744,
+        "neutral": 0.256
     },
     {
         "content": "life badly",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.6999999999999998,
+        "subjectivity": 0.6666666666666666,
+        "polarity_VADER": -0.4767,
+        "positive": 0.0,
+        "negative": 0.756,
+        "neutral": 0.244
     },
     {
         "content": "badly life",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.6999999999999998,
+        "subjectivity": 0.6666666666666666,
+        "polarity_VADER": -0.4767,
+        "positive": 0.0,
+        "negative": 0.756,
+        "neutral": 0.244
     },
     {
         "content": "life completely",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.1,
+        "subjectivity": 0.4,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "completely empty",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.2716,
+        "positive": 0.0,
+        "negative": 0.677,
+        "neutral": 0.323
     },
     {
         "content": "empty dont",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.2023,
+        "positive": 0.0,
+        "negative": 0.643,
+        "neutral": 0.357
     },
     {
         "content": "dont create",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.2057,
+        "positive": 0.0,
+        "negative": 0.645,
+        "neutral": 0.355
     },
     {
         "content": "create meaning",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.2732,
+        "positive": 0.677,
+        "negative": 0.0,
+        "neutral": 0.323
     },
     {
         "content": "meaning creating",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.296,
+        "positive": 0.688,
+        "negative": 0.0,
+        "neutral": 0.312
     },
     {
         "content": "creating meaning",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.296,
+        "positive": 0.688,
+        "negative": 0.0,
+        "neutral": 0.312
     },
     {
         "content": "meaning pain",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.5106,
+        "positive": 0.0,
+        "negative": 0.767,
+        "neutral": 0.233
     },
     {
         "content": "pain hold",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.5106,
+        "positive": 0.0,
+        "negative": 0.767,
+        "neutral": 0.233
     },
     {
         "content": "hold back",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "back urge",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "urge run",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "run car",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "car head",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "head person",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "person coming",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "life meaningless life",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.5,
+        "subjectivity": 1.0,
+        "polarity_VADER": -0.4404,
+        "positive": 0.0,
+        "negative": 0.592,
+        "neutral": 0.408
     },
     {
         "content": "meaningless life badly",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.5999999999999999,
+        "subjectivity": 0.8333333333333333,
+        "polarity_VADER": -0.7184,
+        "positive": 0.0,
+        "negative": 0.857,
+        "neutral": 0.143
     },
     {
         "content": "life badly life",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.6999999999999998,
+        "subjectivity": 0.6666666666666666,
+        "polarity_VADER": -0.4767,
+        "positive": 0.0,
+        "negative": 0.608,
+        "neutral": 0.392
     },
     {
         "content": "badly life completely",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.29999999999999993,
+        "subjectivity": 0.5333333333333333,
+        "polarity_VADER": -0.4767,
+        "positive": 0.0,
+        "negative": 0.608,
+        "neutral": 0.392
     },
     {
         "content": "life completely empty",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.2716,
+        "positive": 0.0,
+        "negative": 0.511,
+        "neutral": 0.489
     },
     {
         "content": "completely empty dont",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.2716,
+        "positive": 0.0,
+        "negative": 0.511,
+        "neutral": 0.489
     },
     {
         "content": "empty dont create",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.3847,
+        "positive": 0.0,
+        "negative": 0.783,
+        "neutral": 0.217
     },
     {
         "content": "dont create meaning",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.2057,
+        "positive": 0.0,
+        "negative": 0.476,
+        "neutral": 0.524
     },
     {
         "content": "create meaning creating",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.5106,
+        "positive": 0.811,
+        "negative": 0.0,
+        "neutral": 0.189
     },
     {
         "content": "meaning creating meaning",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.296,
+        "positive": 0.524,
+        "negative": 0.0,
+        "neutral": 0.476
     },
     {
         "content": "creating meaning pain",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.2732,
+        "positive": 0.338,
+        "negative": 0.508,
+        "neutral": 0.154
     },
     {
         "content": "meaning pain hold",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.5106,
+        "positive": 0.0,
+        "negative": 0.623,
+        "neutral": 0.377
     },
     {
         "content": "pain hold back",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.5106,
+        "positive": 0.0,
+        "negative": 0.623,
+        "neutral": 0.377
     },
     {
         "content": "hold back urge",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "back urge run",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "urge run car",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "run car head",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "car head person",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "head person coming",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "person coming opposite",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "life meaningless life badly",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.5999999999999999,
+        "subjectivity": 0.8333333333333333,
+        "polarity_VADER": -0.7184,
+        "positive": 0.0,
+        "negative": 0.75,
+        "neutral": 0.25
     },
     {
         "content": "meaningless life badly life",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.5999999999999999,
+        "subjectivity": 0.8333333333333333,
+        "polarity_VADER": -0.7184,
+        "positive": 0.0,
+        "negative": 0.75,
+        "neutral": 0.25
     },
     {
         "content": "life badly life completely",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.29999999999999993,
+        "subjectivity": 0.5333333333333333,
+        "polarity_VADER": -0.4767,
+        "positive": 0.0,
+        "negative": 0.508,
+        "neutral": 0.492
     },
     {
         "content": "badly life completely empty",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.3999999999999999,
+        "subjectivity": 0.5833333333333333,
+        "polarity_VADER": -0.6361,
+        "positive": 0.0,
+        "negative": 0.722,
+        "neutral": 0.278
     },
     {
         "content": "life completely empty dont",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.2716,
+        "positive": 0.0,
+        "negative": 0.411,
+        "neutral": 0.589
     },
     {
         "content": "completely empty dont create",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.4889,
+        "positive": 0.0,
+        "negative": 0.676,
+        "neutral": 0.324
     },
     {
         "content": "empty dont create meaning",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.3847,
+        "positive": 0.0,
+        "negative": 0.644,
+        "neutral": 0.356
     },
     {
         "content": "dont create meaning creating",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4023,
+        "positive": 0.0,
+        "negative": 0.649,
+        "neutral": 0.351
     },
     {
         "content": "create meaning creating meaning",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.5106,
+        "positive": 0.683,
+        "negative": 0.0,
+        "neutral": 0.317
     },
     {
         "content": "meaning creating meaning pain",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.2732,
+        "positive": 0.293,
+        "negative": 0.44,
+        "neutral": 0.267
     },
     {
         "content": "creating meaning pain hold",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.2732,
+        "positive": 0.293,
+        "negative": 0.44,
+        "neutral": 0.267
     },
     {
         "content": "meaning pain hold back",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.5106,
+        "positive": 0.0,
+        "negative": 0.524,
+        "neutral": 0.476
     },
     {
         "content": "pain hold back urge",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.5106,
+        "positive": 0.0,
+        "negative": 0.524,
+        "neutral": 0.476
     },
     {
         "content": "hold back urge run",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "back urge run car",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "urge run car head",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "run car head person",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "car head person coming",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "head person coming opposite",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "person coming opposite feeling",
         "N-gram": 4,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.128,
+        "positive": 0.333,
+        "negative": 0.0,
+        "neutral": 0.667
     },
     {
         "content": "life meaningless life badly life",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.5999999999999999,
+        "subjectivity": 0.8333333333333333,
+        "polarity_VADER": -0.7184,
+        "positive": 0.0,
+        "negative": 0.667,
+        "neutral": 0.333
     },
     {
         "content": "meaningless life badly life completely",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.36666666666666653,
+        "subjectivity": 0.6888888888888888,
+        "polarity_VADER": -0.7184,
+        "positive": 0.0,
+        "negative": 0.667,
+        "neutral": 0.333
     },
     {
         "content": "life badly life completely empty",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.3999999999999999,
+        "subjectivity": 0.5833333333333333,
+        "polarity_VADER": -0.6361,
+        "positive": 0.0,
+        "negative": 0.634,
+        "neutral": 0.366
     },
     {
         "content": "badly life completely empty dont",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.3999999999999999,
+        "subjectivity": 0.5833333333333333,
+        "polarity_VADER": -0.6361,
+        "positive": 0.0,
+        "negative": 0.634,
+        "neutral": 0.366
     },
     {
         "content": "life completely empty dont create",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.4889,
+        "positive": 0.0,
+        "negative": 0.582,
+        "neutral": 0.418
     },
     {
         "content": "completely empty dont create meaning",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.4889,
+        "positive": 0.0,
+        "negative": 0.582,
+        "neutral": 0.418
     },
     {
         "content": "empty dont create meaning creating",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": -0.1,
+        "subjectivity": 0.5,
+        "polarity_VADER": -0.5426,
+        "positive": 0.0,
+        "negative": 0.733,
+        "neutral": 0.267
     },
     {
         "content": "dont create meaning creating meaning",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.4023,
+        "positive": 0.0,
+        "negative": 0.552,
+        "neutral": 0.448
     },
     {
         "content": "create meaning creating meaning pain",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.448,
+        "negative": 0.344,
+        "neutral": 0.208
     },
     {
         "content": "meaning creating meaning pain hold",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.2732,
+        "positive": 0.259,
+        "negative": 0.388,
+        "neutral": 0.353
     },
     {
         "content": "creating meaning pain hold back",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.2732,
+        "positive": 0.259,
+        "negative": 0.388,
+        "neutral": 0.353
     },
     {
         "content": "meaning pain hold back urge",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.5106,
+        "positive": 0.0,
+        "negative": 0.452,
+        "neutral": 0.548
     },
     {
         "content": "pain hold back urge run",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.5106,
+        "positive": 0.0,
+        "negative": 0.452,
+        "neutral": 0.548
     },
     {
         "content": "hold back urge run car",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "back urge run car head",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "urge run car head person",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "run car head person coming",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "car head person coming opposite",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
     },
     {
         "content": "head person coming opposite feeling",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.128,
+        "positive": 0.273,
+        "negative": 0.0,
+        "neutral": 0.727
     },
     {
         "content": "person coming opposite feeling jealous",
         "N-gram": 5,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": -0.3612,
+        "positive": 0.2,
+        "negative": 0.4,
+        "neutral": 0.4
     }
 ]

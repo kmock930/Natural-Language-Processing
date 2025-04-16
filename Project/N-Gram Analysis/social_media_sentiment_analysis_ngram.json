@@ -2,16 +2,34 @@
     {
         "content": "Enjoying beautiful",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.675,
+        "subjectivity": 0.8,
+        "polarity_VADER": 0.8074,
+        "positive": 1.0,
+        "negative": 0.0,
+        "neutral": 0.0
     },
     {
         "content": "beautiful park!",
         "N-gram": 2,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 1.0,
+        "subjectivity": 1.0,
+        "polarity_VADER": 0.636,
+        "positive": 0.807,
+        "negative": 0.0,
+        "neutral": 0.193
     },
     {
         "content": "Enjoying beautiful park!",
         "N-gram": 3,
-        "frequency": 1
+        "frequency": 1,
+        "polarity_TextBlob": 0.75,
+        "subjectivity": 0.8,
+        "polarity_VADER": 0.8221,
+        "positive": 0.884,
+        "negative": 0.0,
+        "neutral": 0.116
     }
 ]
