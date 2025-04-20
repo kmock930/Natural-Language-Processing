@@ -15,6 +15,7 @@ Please run this file: `model_1_baseline.ipynb`.
 It relies on the recent generative LLM - deepseek. Please run these files in sequence:
 1. `DeepSeek Data Processing.ipynb`
 2. `DeepSeek Model Implementation.ipynb` (Note: You may need an API key to access the LLM with prompts.)
+3. `parse-test-results.py`: this file exports prediction results into a readable and comparable .json format from an exported .csv file.
 
 Sub-directories like `deepseek_model` contains the trained model and its corresponding information from an evaluation; and `processed_data_deepseek` includes pre-processed data from raw datasets which are compatible with the LLM. 
 
