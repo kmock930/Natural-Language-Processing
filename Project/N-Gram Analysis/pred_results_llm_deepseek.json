@@ -1,0 +1,74 @@
+[
+    {
+        "content": "believe graduating",
+        "N-gram": 2,
+        "frequency": 1,
+        "predicted_label": 0,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
+    },
+    {
+        "content": "graduating todaythis",
+        "N-gram": 2,
+        "frequency": 1,
+        "predicted_label": 0,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
+    },
+    {
+        "content": "todaythis sucks",
+        "N-gram": 2,
+        "frequency": 1,
+        "predicted_label": 0,
+        "polarity_TextBlob": -0.3,
+        "subjectivity": 0.3,
+        "polarity_VADER": -0.3612,
+        "positive": 0.0,
+        "negative": 0.714,
+        "neutral": 0.286
+    },
+    {
+        "content": "believe graduating todaythis",
+        "N-gram": 3,
+        "frequency": 1,
+        "predicted_label": 0,
+        "polarity_TextBlob": 0.0,
+        "subjectivity": 0.0,
+        "polarity_VADER": 0.0,
+        "positive": 0.0,
+        "negative": 0.0,
+        "neutral": 1.0
+    },
+    {
+        "content": "graduating todaythis sucks",
+        "N-gram": 3,
+        "frequency": 1,
+        "predicted_label": 0,
+        "polarity_TextBlob": -0.3,
+        "subjectivity": 0.3,
+        "polarity_VADER": -0.3612,
+        "positive": 0.0,
+        "negative": 0.556,
+        "neutral": 0.444
+    },
+    {
+        "content": "believe graduating todaythis sucks",
+        "N-gram": 4,
+        "frequency": 1,
+        "predicted_label": 0,
+        "polarity_TextBlob": -0.3,
+        "subjectivity": 0.3,
+        "polarity_VADER": -0.3612,
+        "positive": 0.0,
+        "negative": 0.455,
+        "neutral": 0.545
+    }
+]
