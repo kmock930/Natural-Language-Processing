@@ -11,6 +11,9 @@ It is the main directory containing training and evaluation codes of different m
 ### The Baseline Model
 Please run this file: `model_1_baseline.ipynb`.
 ### Deep Learning based Model
+To run the experimentaion of only the custom layers, please run the following Jupyter Notebooks in sequence:
+1. `model_2_deep_learning_customized_training.ipynb`
+2. `model_2_deep_learning_customized_evaluation.ipynb`
 ### LLM-based Model
 It relies on the recent generative LLM - deepseek. Please run these files in sequence:
 1. `DeepSeek Data Processing.ipynb`
