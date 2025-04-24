@@ -2,40 +2,263 @@
 # This script combines the predictions from all other models to create a hybrid model.
 
 import os
-import shutil
-import pandas as pd
+# Removed unused imports
+import joblib
 import numpy as np
-
+import tensorflow as tf
+import tensorflow as tf
 # Suppress warnings
 import warnings
 warnings.filterwarnings("ignore")
 
 TRAINING_PATH = os.path.dirname(os.path.realpath(__file__))
 
-HYBRID_MODEL_OUTPUT_DIR = os.path.join(TRAINING_PATH, 'Hybrid')
-if os.path.exists(HYBRID_MODEL_OUTPUT_DIR):
-    shutil.rmtree(HYBRID_MODEL_OUTPUT_DIR)
-os.makedirs(HYBRID_MODEL_OUTPUT_DIR)
-
 DATA_PATH = os.path.realpath(os.path.join(TRAINING_PATH, "..","data"))
 
+# =========================
+# Load the Models
+# =========================
+baseline_model = joblib.load(os.path.join(TRAINING_PATH, 'models', 'best_baseline_model_LogisticRegression.h5'))
+distilBERT_model = tf.keras.models.load_model(os.path.join(TRAINING_PATH, 'models', 'custom_classifier_fold_2.h5'))
 
 # =========================
-# Load Prediction Array 
-# from DEEPSEEK Model
+# Load the Input Data
 # =========================
-DEEPSEEK_OUTPUT_DIR = os.path.join('deepseek', 'deepseek_model')
-deepseek_pred_table = pd.read_csv(os.path.join(TRAINING_PATH, 'deepseek', 'deepseek_model', 'test_predictions.csv'))
-deepseek_true_labels = deepseek_pred_table['label']
-deepseek_pred = deepseek_pred_table['predicted_label']
-deepseek_pred_proba = deepseek_pred_table['predicted_probability']
-assert len(deepseek_pred) == len(deepseek_true_labels) == len(deepseek_pred_proba)
+# Data tokenized by raw DistilBERT
+baseline_X_train = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'Text', 'X_train_text.npy'))
+baseline_X_val = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'Text', 'X_val_text.npy'))
+baseline_X_test = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'Text', 'X_test_text.npy'))
+baseline_y_train = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'y_train_text.npy'))
+baseline_y_val = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'y_val_text.npy'))
+
+# Data tokenized by fine-tuned DistilBERT
+distilBERT_X_train = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'X_train_resampled.npy'))
+distilBERT_X_val = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'X_val_resampled.npy'))
+distilBERT_y_train = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'y_train_resampled.npy'))
+distilBERT_y_val = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'y_val_resampled.npy'))
+
+print("Baseline X_train shape: ", baseline_X_train.shape)
+print("DistilBERT X_train shape: ", distilBERT_X_train.shape)
 
 # =========================
-# Load Prediction Array
-# from Baseline Model
+# Reshape the Data
 # =========================
-BASELINE_OUTPUT_DIR = os.path.join(TRAINING_PATH, 'Results')
-baseline_pred = np.load(os.path.join(BASELINE_OUTPUT_DIR, 'baseline_y_pred.npy'))
-baseline_true_labels = np.load(os.path.join(BASELINE_OUTPUT_DIR, 'baseline_y_true.npy'))
-assert len(baseline_pred) == len(baseline_true_labels)
+baseline_X_train = baseline_X_train.reshape(baseline_X_train.shape[0], -1)
+baseline_X_val = baseline_X_val.reshape(baseline_X_val.shape[0], -1)
+baseline_X_test = baseline_X_test.reshape(baseline_X_test.shape[0], -1)
+
+distilBERT_X_train = distilBERT_X_train.reshape(distilBERT_X_train.shape[0], -1)
+distilBERT_X_val = distilBERT_X_val.reshape(distilBERT_X_val.shape[0], -1)
+
+print("After Reshaping:")
+print("Baseline X_train shape: ", baseline_X_train.shape)
+print("DistilBERT X_train shape: ", distilBERT_X_train.shape)
+
+# =========================
+# Create An Ensemble Model
+# An ensemble based on 
+# majority voting rule
+# =========================
+class CustomVotingClassifier:
+    def __init__(self, estimators, input_map, voting='soft'):
+        """
+        estimators: list of (name, model) tuples.
+        input_map: dict mapping model names to input sets ('X1', 'X2', etc.)
+        voting: 'soft' or 'hard'
+        """
+        self.estimators = dict(estimators)
+        self.input_map = input_map
+        self.voting = voting
+        self.fitted_estimators = {}
+
+    def fit(self, input_dict, y_dict):
+        """
+        input_dict: {'X1': np.ndarray, 'X2': np.ndarray, ...}
+        y_dict: {'X1': labels, 'X2': labels, ...}
+        """
+        for name, model in self.estimators.items():
+            X = input_dict[self.input_map[name]]
+            y = y_dict[self.input_map[name]]
+            if isinstance(model, tf.keras.Model):
+                # Handle TensorFlow Keras models
+                model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+            model.fit(X, y)
+            self.fitted_estimators[name] = model
+        return self
+
+    def _normalize_proba(self, p, name=""):
+        """Ensure predictions are (n_samples, 2)"""
+        print(f"[DEBUG] {name} raw shape before normalization: {p.shape}")
+
+        if isinstance(p, tf.Tensor):
+            p = p.numpy()
+        if p.ndim == 1:
+            # (n,) → (n,2)
+            p = np.vstack([1 - p, p]).T
+        elif p.ndim == 2:
+            if p.shape[1] == 1:
+                # Sigmoid → softmax-style
+                p = np.hstack([1 - p, p])
+            elif p.shape[1] == 4:
+                if np.allclose(p[:, 0], p[:, 3], rtol=1e-3) and np.allclose(p[:, 1], p[:, 2], rtol=1e-3):
+                    print(f"[{name}] 4-column mirrored output detected → truncated to [:, :2]")
+                    p = p[:, :2]
+                else:
+                    raise ValueError(f"[{name}] Unexpected 4-column output structure")
+            elif p.shape[1] != 2:
+                raise ValueError(f"[{name}] Unsupported output shape: {p.shape}")
+        else:
+            raise ValueError(f"[{name}] Output must be 1D or 2D, got shape {p.shape}")
+        
+        print(f"[DEBUG] {name} normalized shape: {p.shape}")
+        return p
+
+    def predict_proba(self, input_dict):
+        probs = []
+        for name, model in self.fitted_estimators.items():
+            X = input_dict[self.input_map[name]]
+            if isinstance(model, tf.keras.Model):
+                # Handle TensorFlow Keras models
+                p = model.predict(X, verbose=0) if isinstance(model, tf.keras.Model) else model.predict_proba(X)
+                p = self._normalize_proba(p, name)
+            else:
+                # Handle sklearn models
+                p = model.predict_proba(X)
+                p = self._normalize_proba(p, name)
+            
+            # Convert Tensor → NumPy
+            if isinstance(p, tf.Tensor):
+                p = p.numpy()
+
+            print(f"Model {name} probabilities shape: {p.shape}")
+            
+            # Final sanity check
+            assert p.shape[1] == 2, f"{name} returned probabilities of shape {p.shape}, expected ({p.shape[0]}, 2)"
+
+            probs.append(p)
+        
+        probs = np.stack(probs)
+        # Safety Check
+        first_shape = probs[0].shape
+        for i, p in enumerate(probs):
+            if p.shape != first_shape:
+                raise ValueError(f"Model {i} returned probabilities of shape {p.shape}, expected {first_shape}")
+        return np.mean(probs, axis=0)
+
+    def predict(self, input_dict):
+        if self.voting == 'soft':
+            # Based on probabilities
+            return np.argmax(self.predict_proba(input_dict), axis=1)
+        elif self.voting == 'hard':
+            # Based on majority voting of labels
+            preds = []
+            for name, model in self.fitted_estimators.items():
+                X = input_dict[self.input_map[name]]
+                if isinstance(model, tf.keras.Model):
+                    # Handle TensorFlow Keras models
+                    p = model.predict(X, verbose=0)
+
+                    # Convert Tensor to NumPy
+                    if isinstance(p, tf.Tensor):
+                        p = p.numpy()
+                    
+                    if p.ndim == 2 and p.shape[1] == 1:
+                        p = p.flatten()
+                    
+                    p = (p > 0.5).astype(int)
+                else:
+                    # Handle sklearn models
+                    p = model.predict(X)
+
+                    # Ensure 1D shape
+                    if p.ndim == 2 and p.shape[1] == 1:
+                        p = p.flatten()
+                preds.append(p)
+
+            preds = np.array(preds)
+            return np.apply_along_axis(lambda x: np.bincount(x).argmax(), axis=0, arr=preds)
+        else:
+            raise ValueError("Voting must be 'soft' or 'hard'")
+
+# =========================
+# Instantiate the Ensembles
+# with different votings
+# =========================
+ensemble_soft = CustomVotingClassifier(
+    estimators=[
+        ('baseline', baseline_model),
+        ('distilbert', distilBERT_model),
+    ],
+    input_map={
+        'baseline': 'X1',
+        'distilbert': 'X2',
+    },
+    voting='soft' # probability-based voting
+)
+
+ensemble_hard = CustomVotingClassifier(
+    estimators=[
+        ('baseline', baseline_model),
+        ('distilbert', distilBERT_model),
+    ],
+    input_map={
+        'baseline': 'X1',
+        'distilbert': 'X2',
+    },
+    voting='hard' # label-based majority voting
+)
+
+# =========================
+# Fit the Ensemble Models
+# =========================
+ensemble_soft.fit(
+    input_dict={
+        'X1': baseline_X_train,
+        'X2': distilBERT_X_train,
+    },
+    y_dict={
+        'X1': baseline_y_train,
+        'X2': distilBERT_y_train,
+    }
+)
+
+ensemble_hard.fit(
+    input_dict={
+        'X1': baseline_X_train,
+        'X2': distilBERT_X_train,
+    },
+    y_dict={
+        'X1': baseline_y_train,
+        'X2': distilBERT_y_train,
+    }
+)
+
+# =========================
+# Predict
+# =========================
+min_samples = min(baseline_X_val.shape[0], distilBERT_X_val.shape[0])
+proba_soft = ensemble_soft.predict_proba(
+    {
+        'X1': baseline_X_val[:min_samples],
+        'X2': distilBERT_X_val[:min_samples],
+    }
+)
+labels_soft = (proba_soft[:, 1] > 0.5).astype(int)
+
+labels_hard = ensemble_hard.predict({
+    'X1': baseline_X_val[:min_samples],
+    'X2': distilBERT_X_val[:min_samples],
+})
+
+# =========================
+# Combine Predictions
+# Average of class 1 ('Suicidal') probabilities
+# =========================
+final_preds = (labels_soft + labels_hard >= 1).astype(int) # Majority voting
+
+print(f"Shape of Final Predictions: {final_preds.shape}")
+
+# =========================
+# Save the Predictions
+# =========================
+np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_final_predictions.npy'), final_preds)
