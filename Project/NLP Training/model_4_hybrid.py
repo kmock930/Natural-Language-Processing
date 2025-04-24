@@ -233,21 +233,53 @@ ensemble_hard.fit(
     }
 )
 
-# =========================
-# Predict
-# =========================
-min_samples = min(baseline_X_val.shape[0], distilBERT_X_val.shape[0])
+#############################################################
+
+# ==================================
+# Predict with RAW DistilBERT
+# ==================================
 proba_soft = ensemble_soft.predict_proba(
     {
-        'X1': baseline_X_val[:min_samples],
-        'X2': distilBERT_X_val[:min_samples],
+        'X1': baseline_X_val,
+        'X2': baseline_X_val,
     }
 )
 labels_soft = (proba_soft[:, 1] > 0.5).astype(int)
 
 labels_hard = ensemble_hard.predict({
-    'X1': baseline_X_val[:min_samples],
-    'X2': distilBERT_X_val[:min_samples],
+    'X1': baseline_X_val,
+    'X2': baseline_X_val,
+})
+
+# =========================
+# Combine Predictions
+# Average of class 1 ('Suicidal') probabilities
+# =========================
+final_preds = (labels_soft + labels_hard >= 1).astype(int) # Majority voting
+
+# =========================
+# Save the Predictions 
+# And True Labels
+# =========================
+np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_baseline_predictions.npy'), final_preds)
+np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_baseline_true_labels.npy'), baseline_y_val)
+
+#############################################################
+
+# ==================================
+# Predict with fine-tuned DistilBERT
+# ==================================
+proba_soft = ensemble_soft.predict_proba(
+    {
+        'X1': distilBERT_X_val,
+        'X2': distilBERT_X_val,
+    }
+)
+labels_soft = (proba_soft[:, 1] > 0.5).astype(int)
+
+labels_hard = ensemble_hard.predict({
+    'X1': distilBERT_X_val,
+    'X2': distilBERT_X_val,
 })
 
 # =========================
@@ -259,6 +291,14 @@ final_preds = (labels_soft + labels_hard >= 1).astype(int) # Majority voting
 print(f"Shape of Final Predictions: {final_preds.shape}")
 
 # =========================
-# Save the Predictions
+# Save the Predictions 
+# And True Labels
 # =========================
-np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_final_predictions.npy'), final_preds)
+np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_distilBERT_predictions.npy'), final_preds)
+np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_distilBERT_true_labels.npy'), distilBERT_y_val)
+
+# =========================
+# Save the Model
+# =========================
+joblib.dump(ensemble_soft, os.path.join(TRAINING_PATH, 'models', 'ensemble_soft_model.pkl'))
+joblib.dump(ensemble_hard, os.path.join(TRAINING_PATH, 'models', 'ensemble_hard_model.pkl'))
