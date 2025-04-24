@@ -14,6 +14,12 @@ Please run this file: `model_1_baseline.ipynb`.
 To run the experimentaion of only the custom layers, please run the following Jupyter Notebooks in sequence:
 1. `model_2_deep_learning_customized_training.ipynb`
 2. `model_2_deep_learning_customized_evaluation.ipynb`
+
+To run the full pipeline, please run these Python files in sequence:
+1. `fine-tuning-distilBERT.py`
+2. `training-added-layers-distilBERT.py`
+
+Alternatively, you may directly run this file for the entire pipeline: `model_2_deep_learning_pipeline.py`.
 ### LLM-based Model
 It relies on the recent generative LLM - deepseek. Please run these files in sequence:
 1. `DeepSeek Data Processing.ipynb`

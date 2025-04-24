@@ -154,9 +154,9 @@ def vectorize(list_of_texts: list[str]):
     tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
     encoded_input = tokenizer(
         list_of_texts,
-        padding=True,
+        padding='max_length',
         truncation=True,
-        max_length=32,
+        max_length=128,
         return_tensors='tf'
     )
     return encoded_input
