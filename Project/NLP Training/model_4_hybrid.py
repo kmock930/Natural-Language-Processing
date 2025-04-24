@@ -6,7 +6,8 @@ import os
 import joblib
 import numpy as np
 import tensorflow as tf
-import tensorflow as tf
+import json
+import pandas as pd
 # Suppress warnings
 import warnings
 warnings.filterwarnings("ignore")
@@ -14,6 +15,8 @@ warnings.filterwarnings("ignore")
 TRAINING_PATH = os.path.dirname(os.path.realpath(__file__))
 
 DATA_PATH = os.path.realpath(os.path.join(TRAINING_PATH, "..","data"))
+
+TEST_DATA_PATH = os.path.join(DATA_PATH, 'Depression_Tweets')
 
 # =========================
 # Load the Models
@@ -302,3 +305,44 @@ np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_distilBERT_true_l
 # =========================
 joblib.dump(ensemble_soft, os.path.join(TRAINING_PATH, 'models', 'ensemble_soft_model.pkl'))
 joblib.dump(ensemble_hard, os.path.join(TRAINING_PATH, 'models', 'ensemble_hard_model.pkl'))
+
+# ===========================
+# Export Test Set Predictions
+# ===========================
+print(f"Shape of Test Set: {baseline_X_test.shape}")
+proba_soft = ensemble_soft.predict_proba(
+    {
+        'X1': baseline_X_test,
+        'X2': baseline_X_test,
+    }
+)
+labels_soft = (proba_soft[:, 1] > 0.5).astype(int)
+
+labels_hard = ensemble_hard.predict({
+    'X1': baseline_X_test,
+    'X2': baseline_X_test,
+})
+
+final_preds = (labels_soft + labels_hard >= 1).astype(int) # Majority voting
+
+print(f"Shape of Final Predictions (on the Test Set): {final_preds.shape}")
+
+results = []
+test_data = pd.read_json(os.path.join(TEST_DATA_PATH, 'depression_json'))
+print(f"Length of Test Data: {len(test_data)}")
+for idx, (text, label) in enumerate(zip(test_data['content'], final_preds)):
+    results.append({
+        'id': idx,
+        'predicted_label': int(label),
+        'raw_text': text,
+    })
+
+# Define the output file path
+output_file_path = os.path.join(TRAINING_PATH, "Results", "Result_hybrid_model.jsonl")
+
+# Save the results to a JSONL file
+with open(output_file_path, "w") as jsonl_file:
+    for record in results:
+        jsonl_file.write(json.dumps(record) + "\n")
+
+print(f"Results saved to {output_file_path}")
