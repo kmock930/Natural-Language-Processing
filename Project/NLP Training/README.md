@@ -43,3 +43,8 @@
 * Run these notebooks in sequence: 
 1. `DeepSeek Data Processing.ipynb`
 2. `DeepSeek Model Implementation.ipynbDeepSeek Model Implementation.ipynb`
+# Hybrid Model
+* This model combines the baseline model and the DistilBERT-based model. 
+* Run these files in sequence:
+1. Training: `model_4_hybrid.py`
+2. Evaluation: `model_4_hybrid_evaluation.ipynb`
