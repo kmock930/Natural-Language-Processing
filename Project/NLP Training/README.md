@@ -6,7 +6,12 @@
 * Run this notebook: `model_1_baseline.ipynb`.
 # Fine Tuning DistilBERT
 ## Execution Guidelines
-As suggested in `model_2_deep_learning_pipeline.py`, the pipeline for training our 2nd deep-learning-based model is in the sequence of firstly running `fine-tuning-distilBERT.py` and secondly `training-added-layers-distilBERT.py`.
+### Full Pipeline
+* As suggested in `model_2_deep_learning_pipeline.py`, the pipeline for training our 2nd deep-learning-based model is in the sequence of firstly running `fine-tuning-distilBERT.py` and secondly `training-added-layers-distilBERT.py`.
+* Run this notebook for evaluating the model: `model_2_deep_learning_OVERALL_evaluation.ipynb`.
+### Experimental Codes of the Custom Layers
+* Run this notebook to train standalone custom layers: `model_2_deep_learning_customized_training.ipynb`.
+* Then, run this notebook to evaluate the standalone layers: `model_2_deep_learning_OVERALL_evaluation.ipynb`.
 ## Files and Directories
 * `resampled data` is a directory containing resmapled data arrays from training, validation and test set. Those text embeddings are also vectorized using the fine-tuned DistilBERT model. 
 * If you intend to use embeddings produced from the **raw** pretrained DistilBERT model, please check this directory: `data/Numpy Data/Text`. It is produced from `data/data_splitting_DistilBERT.py` and used in `data/data_processing.py` the preprocessing logic and the baseline model. 
