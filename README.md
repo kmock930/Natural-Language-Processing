@@ -15,6 +15,7 @@ Given the rising popularity of social media, there is a risk of negative impacts
 * [Project's Proposal](./Project/CSI5386_Natural_Language_Processing_Project_Proposal.pdf)
 * [Presenting from the NLP's Perspective](./Project/Project%20Presentation%20-%20NLP%20Aspects.pdf)
 Our project analyzes suicidal intentions from popular social media platforms, and trains the best model for suicidal detection. Here are the models that we've used. 
+* [Our Report](./Project/CSI5386_NLP_Project_Report___Kelvin__Jenifer__Sabrina.pdf)
 
 ![Summary of Models](./Project/models_comparison.png)
 
