@@ -2,7 +2,6 @@
 # This script combines the predictions from all other models to create a hybrid model.
 
 import os
-# Removed unused imports
 import joblib
 import numpy as np
 import tensorflow as tf
@@ -22,7 +21,36 @@ TEST_DATA_PATH = os.path.join(DATA_PATH, 'Depression_Tweets')
 # Load the Models
 # =========================
 baseline_model = joblib.load(os.path.join(TRAINING_PATH, 'models', 'best_baseline_model_LogisticRegression.h5'))
-distilBERT_model = tf.keras.models.load_model(os.path.join(TRAINING_PATH, 'models', 'custom_classifier_fold_2.h5'))
+try:
+    distilBERT_model = tf.keras.models.load_model(os.path.join(TRAINING_PATH, 'models', 'BEST_custom_classifier.h5'))
+except Exception as e:
+    # Set this to the shape of your input array
+    INPUT_DIM = 2304  # 3 * 768 from your original Reshape
+
+    # Define the previously trained model architecture again
+    def build_custom_classifier():
+        inputs = tf.keras.Input(shape=(INPUT_DIM,), name="input")
+        x = tf.keras.layers.Reshape((3, -1))(inputs)
+        x = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(64, return_sequences=False))(x)
+        x = tf.keras.layers.Dropout(0.3)(x)
+        x = tf.keras.layers.Dense(32, activation="relu")(x)
+        outputs = tf.keras.layers.Dense(1, activation="sigmoid")(x)
+        model = tf.keras.Model(inputs=inputs, outputs=outputs)
+        return model
+
+    # Load Paths
+    old_model_path = os.path.join(TRAINING_PATH, "models", "BEST_custom_classifier.h5")
+    new_model_path = os.path.join(TRAINING_PATH, "models", "BEST_custom_classifier.keras")
+
+    # Build and load weights
+    model = build_custom_classifier()
+    model.load_weights(old_model_path)
+
+    # Save in .keras format
+    model.save(new_model_path, save_format="keras")
+    print(f"✅ Model converted and saved to {new_model_path}")
+
+    distilBERT_model = tf.keras.models.load_model(new_model_path,compile=False)
 
 # =========================
 # Load the Input Data
