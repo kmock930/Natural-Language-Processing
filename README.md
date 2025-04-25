@@ -27,7 +27,9 @@ Our project analyzes suicidal intentions from popular social media platforms, an
 ![Project - Deep Learning based model resulting AUC](./Project/NLP%20Training/Results/model_2_deep_learning_auc_curve.png)
 
 ### LLM-based Model
-![Project - LLM-based Model](./Project/NLP%20Training/Results/deepseek_confusion_matrix.png)
+![Project - LLM-Based Model - ROC-AUC](./Project/NLP%20Training/Results/ROC-deepseek.png)
+
+![Project - LLM-based Model - Confusion Matrix](./Project/NLP%20Training/Results/deepseek_confusion_matrix.png)
 
 ## Execution Guide
 * [**TMUX**](tmux.md) for idling long executions
