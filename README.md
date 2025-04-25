@@ -20,9 +20,9 @@ Our project analyzes suicidal intentions from popular social media platforms, an
 ![Project - Baseline Model](./Project/NLP%20Training/Results/baseline_auc_curve.png)
 
 ### Fine-Tuning a Deep Learning based Transformer - DistilBERT
-![Project - Deep Learning based Fine-Tuning DistilBERT Model's Results](./Project/NLP%20Training/models/Fine-tuned%20DistilBERT%20accuracy_fold_2.png)
+![Project - Deep Learning based Fine-Tuning DistilBERT Model's Results](./Project/NLP%20Training/Results/Fine-tuned%20DistilBERT%20accuracy_fold_2.png)
 ### Added Custom Layers on top of Fine-Tuned DistilBERT
-![Project - Deep Learning based Custom Layers](./Project/NLP%20Training/models/Custom%20Layers_accuracy_fold_5.png)
+![Project - Deep Learning based Custom Layers](./Project/NLP%20Training/Results/Custom%20Layers_accuracy_fold_5.png)
 
 ![Project - Deep Learning based model resulting AUC](./Project/NLP%20Training/Results/model_2_deep_learning_auc_curve.png)
 
