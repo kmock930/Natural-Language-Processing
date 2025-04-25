@@ -28,6 +28,18 @@ It relies on the recent generative LLM - deepseek. Please run these files in seq
 
 Sub-directories like `deepseek_model` contains the trained model and its corresponding information from an evaluation; and `processed_data_deepseek` includes pre-processed data from raw datasets which are compatible with the LLM. 
 
+### Hybrid-based Model
+* This model combines the baseline model and the DistilBERT-based model. 
+* Run these files in sequence:
+1. Training: `model_4_hybrid.py`
+2. Evaluation: `model_4_hybrid_evaluation.ipynb`
+
+## [Results](./NLP%20Training/Results/)
+This directory contains all sorts of results, including graphs and some `.jsonl` files. The filename indicates clearly which model exports those predictions. And there is also a `.jsonl` file with the best model's predictions. 
+
+## [The Best Model](./ModelSummarizer.py)
+Run this script to know which model is the best: `ModelSummarizer.py`.
+
 ## [Reference Paper](./Reference%20Paper/)
 This directory includes all the academic papers as an inspirational source of our project.
 
