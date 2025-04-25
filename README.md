@@ -24,6 +24,8 @@ Our project analyzes suicidal intentions from popular social media platforms, an
 ### Added Custom Layers on top of Fine-Tuned DistilBERT
 ![Project - Deep Learning based Custom Layers](./Project/NLP%20Training/models/Custom%20Layers_accuracy_fold_5.png)
 
+![Project - Deep Learning based model resulting AUC](./Project/NLP%20Training/Results/model_2_deep_learning_auc_curve.png)
+
 ### LLM-based Model
 ![Project - LLM-based Model](./Project/NLP%20Training/Results/deepseek_confusion_matrix.png)
 
