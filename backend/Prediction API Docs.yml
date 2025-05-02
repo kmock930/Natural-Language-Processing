@@ -48,6 +48,8 @@ paths:
       responses:
         '200':
           description: OK
+        '400':
+          description: Invalid path or body
   /predict/Baseline model logisticregression:
     post:
       requestBody:
@@ -66,10 +68,11 @@ paths:
                 hashtags:
                   type: string
                   description: A string of all hashtags in the post, could be separated by an empty space
-                  
       responses:
         '200':
           description: OK
+        '400':
+          description: Invalid path or body
   /predict/ensemble:
     post:
       requestBody:
@@ -93,3 +96,5 @@ paths:
       responses:
         '200':
           description: OK
+        '400':
+          description: Invalid path or body

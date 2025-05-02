@@ -12,6 +12,7 @@ from models import getModels, predict as customPredict
 import numpy as np
 
 from fastapi import Request
+from fastapi.responses import JSONResponse
 app = FastAPI()
 
 def is_local_request(request: Request):
@@ -34,7 +35,7 @@ async def predict(model_name: str, request: Request):
         body = await request.json()
         if 'baseline' in model_name.lower():
             if not all(key in body for key in ['title', 'content', 'hashtags']):
-                return {"error": "Invalid input format. Expected keys: title, content, hashtags."}
+                return JSONResponse(status_code=400, content={"error": "Invalid input format. Expected keys: title, content, hashtags."})
             title = body['title']
             content = body['content']
             hashtags = body['hashtags']
@@ -56,9 +57,9 @@ async def predict(model_name: str, request: Request):
             )
         if 'distilbert' in model_name.lower():
             if not all(key in body for key in ['content']):
-                return {"error": "Invalid input format. Expected keys: content."}
+                return JSONResponse(status_code=400, content={"error": "Invalid input format. Expected keys: content."})
             title = body['title'] if 'title' in body else ""
-            content = body['content'] # mandatory
+            content = body['content']  # mandatory
             hashtags = body['hashtags'] if 'hashtags' in body else ""
             print(f"Content: {content}")
             tokenizer = models["Model deep learning distilbert finetuned encoder"]
@@ -81,9 +82,9 @@ async def predict(model_name: str, request: Request):
             )
         if 'ensemble' in model_name.lower():
             if not all(key in body for key in ['content']):
-                return {"error": "Invalid input format. Expected keys: content."}
+                return JSONResponse(status_code=400, content={"error": "Invalid input format. Expected keys: content."})
             title = body['title'] if 'title' in body else ""
-            content = body['content'] # mandatory
+            content = body['content']  # mandatory
             hashtags = body['hashtags'] if 'hashtags' in body else ""
 
             tokenizer = models["Model deep learning distilbert finetuned encoder"]
@@ -112,13 +113,16 @@ async def predict(model_name: str, request: Request):
             final_prediction = (np.sum(predictions) >= 1).astype(int)
             print(f"Final prediction: {final_prediction}")
             prediction = final_prediction
-        
+
         # Convert prediction to a more readable format
         if isinstance(prediction, float):
             prediction = 1 if prediction >= 0.5 else 0
-        return {"Prediction": 'suicidal' if prediction == 1 else 'non-suicidal'}
+        return JSONResponse(
+            status_code=200, 
+            content={"Prediction": 'suicidal' if prediction == 1 else 'non-suicidal'}
+        )
     else:
-        return {"error": "Model not found"}
+        return JSONResponse(status_code=400, content={"error": "Model not found"})
 
 
 
