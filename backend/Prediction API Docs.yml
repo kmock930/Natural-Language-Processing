@@ -1,0 +1,64 @@
+openapi: '3.0.3'
+info:
+  title: Model Predictions
+  version: '1.0'
+servers:
+  - url: http://127.0.0.1:8000 # localhost
+paths:
+  /:
+    get:
+      summary: Root endpoint
+      description: Returns Hello World.
+      responses:
+        '200':
+          description: Welcome message
+  /getModelNames:
+    get:
+      summary: Get model names
+      description: Returns a list of available model names.
+      responses:
+        '200':
+          description: List of model names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /predict/Fine tuned distilbert fold 2:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: A string of a post's textual content
+      responses:
+        '200':
+          description: OK
+  /predict/Baseline model logisticregression:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: A string of a post's title
+                content:
+                  type: string
+                  description: A string of a post's textual content
+                hashtags:
+                  type: string
+                  description: A string of all hashtags in the post, could be separated by an empty space
+                  
+      responses:
+        '200':
+          description: OK

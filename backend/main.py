@@ -1,0 +1,92 @@
+from fastapi import FastAPI
+
+import os
+PROJECT_PATH = os.path.join(os.path.dirname(__file__), "..", "Project")
+TRAINING_PATH = os.path.join(PROJECT_PATH, "NLP Training")
+MODELS_PATH = os.path.join(TRAINING_PATH, "models")
+import sys
+sys.path.append(TRAINING_PATH)
+
+from model_4_hybrid import CustomVotingClassifier
+from models import getModels, predict as customPredict
+
+from fastapi import Request
+app = FastAPI()
+
+def is_local_request(request: Request):
+    return request.client.host in ["127.0.0.1", "localhost"]
+
+@app.get("/")
+async def read_root():
+    return {"Hello": "World"}
+
+
+@app.get("/getModelNames")
+async def get_model_names(request: Request):
+    models = getModels(nameOnly=True, isLocal=is_local_request(request))
+    return list(models.keys())
+
+@app.post("/predict/{model_name}")
+async def predict(model_name: str, request: Request):
+    models = getModels(nameOnly=False, isLocal=is_local_request(request))
+    if model_name in models:
+        body = await request.json()
+        if 'baseline' in model_name.lower():
+            if not all(key in body for key in ['title', 'content', 'hashtags']):
+                return {"error": "Invalid input format. Expected keys: title, content, hashtags."}
+            title = body['title']
+            content = body['content']
+            hashtags = body['hashtags']
+
+            tokenizer = models["Model deep learning distilbert finetuned encoder"]
+            distilBERT_encoder = models["Fine tuned distilbert fold 2"]
+            baseline_model = models["Baseline model logisticregression"]
+
+            prediction = customPredict(
+                modelName="baseline",
+                inputData={
+                    'title': title,
+                    'content': content,
+                    'hashtags': hashtags
+                },
+                tokenizer=tokenizer,
+                encoder=distilBERT_encoder,
+                model=baseline_model
+            )
+        if 'distilbert' in model_name.lower():
+            if not all(key in body for key in ['content']):
+                return {"error": "Invalid input format. Expected keys: content."}
+            content = body['content']
+            print(f"Content: {content}")
+            tokenizer = models["Model deep learning distilbert finetuned encoder"]
+            print("Tokenizer is loaded.")
+            encoder = models["Fine tuned distilbert fold 2"]
+            print("Encoder is loaded.")
+            model = models["Custom classifier.keras"]
+            print("Model is loaded.")
+            # Prediction
+            prediction = customPredict(
+                modelName="distilBERT",
+                inputData={
+                    'title': "",
+                    'content': content,
+                    'hashtags': ""
+                },
+                tokenizer=tokenizer,
+                encoder=encoder,
+                model=model
+            )
+        if isinstance(prediction, float):
+            prediction = 1 if prediction >= 0.5 else 0
+        return {"Prediction": 'suicidal' if prediction == 1 else 'non-suicidal'}
+    else:
+        return {"error": "Model not found"}
+
+
+
+def main():
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
+
+if __name__ == "__main__":
+    main()

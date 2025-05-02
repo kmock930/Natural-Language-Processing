@@ -18,74 +18,6 @@ DATA_PATH = os.path.realpath(os.path.join(TRAINING_PATH, "..","data"))
 TEST_DATA_PATH = os.path.join(DATA_PATH, 'Depression_Tweets')
 
 # =========================
-# Load the Models
-# =========================
-baseline_model = joblib.load(os.path.join(TRAINING_PATH, 'models', 'best_baseline_model_LogisticRegression.h5'))
-try:
-    distilBERT_model = tf.keras.models.load_model(os.path.join(TRAINING_PATH, 'models', 'BEST_custom_classifier.h5'))
-except Exception as e:
-    # Set this to the shape of your input array
-    INPUT_DIM = 2304  # 3 * 768 from your original Reshape
-
-    # Define the previously trained model architecture again
-    def build_custom_classifier():
-        inputs = tf.keras.Input(shape=(INPUT_DIM,), name="input")
-        x = tf.keras.layers.Reshape((3, -1))(inputs)
-        x = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(64, return_sequences=False))(x)
-        x = tf.keras.layers.Dropout(0.3)(x)
-        x = tf.keras.layers.Dense(32, activation="relu")(x)
-        outputs = tf.keras.layers.Dense(1, activation="sigmoid")(x)
-        model = tf.keras.Model(inputs=inputs, outputs=outputs)
-        return model
-
-    # Load Paths
-    old_model_path = os.path.join(TRAINING_PATH, "models", "BEST_custom_classifier.h5")
-    new_model_path = os.path.join(TRAINING_PATH, "models", "BEST_custom_classifier.keras")
-
-    # Build and load weights
-    model = build_custom_classifier()
-    model.load_weights(old_model_path)
-
-    # Save in .keras format
-    model.save(new_model_path, save_format="keras")
-    print(f"✅ Model converted and saved to {new_model_path}")
-
-    distilBERT_model = tf.keras.models.load_model(new_model_path,compile=False)
-
-# =========================
-# Load the Input Data
-# =========================
-# Data tokenized by raw DistilBERT
-baseline_X_train = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'Text', 'X_train_text.npy'))
-baseline_X_val = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'Text', 'X_val_text.npy'))
-baseline_X_test = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'Text', 'X_test_text.npy'))
-baseline_y_train = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'y_train_text.npy'))
-baseline_y_val = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'y_val_text.npy'))
-
-# Data tokenized by fine-tuned DistilBERT
-distilBERT_X_train = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'X_train_resampled.npy'))
-distilBERT_X_val = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'X_val_resampled.npy'))
-distilBERT_y_train = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'y_train_resampled.npy'))
-distilBERT_y_val = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'y_val_resampled.npy'))
-
-print("Baseline X_train shape: ", baseline_X_train.shape)
-print("DistilBERT X_train shape: ", distilBERT_X_train.shape)
-
-# =========================
-# Reshape the Data
-# =========================
-baseline_X_train = baseline_X_train.reshape(baseline_X_train.shape[0], -1)
-baseline_X_val = baseline_X_val.reshape(baseline_X_val.shape[0], -1)
-baseline_X_test = baseline_X_test.reshape(baseline_X_test.shape[0], -1)
-
-distilBERT_X_train = distilBERT_X_train.reshape(distilBERT_X_train.shape[0], -1)
-distilBERT_X_val = distilBERT_X_val.reshape(distilBERT_X_val.shape[0], -1)
-
-print("After Reshaping:")
-print("Baseline X_train shape: ", baseline_X_train.shape)
-print("DistilBERT X_train shape: ", distilBERT_X_train.shape)
-
-# =========================
 # Create An Ensemble Model
 # An ensemble based on 
 # majority voting rule
@@ -211,166 +143,235 @@ class CustomVotingClassifier:
         else:
             raise ValueError("Voting must be 'soft' or 'hard'")
 
-# =========================
-# Instantiate the Ensembles
-# with different votings
-# =========================
-ensemble_soft = CustomVotingClassifier(
-    estimators=[
-        ('baseline', baseline_model),
-        ('distilbert', distilBERT_model),
-    ],
-    input_map={
-        'baseline': 'X1',
-        'distilbert': 'X2',
-    },
-    voting='soft' # probability-based voting
-)
+if __name__ == "__main__":
+    # =========================
+    # Load the Models
+    # =========================
+    baseline_model = joblib.load(os.path.join(TRAINING_PATH, 'models', 'best_baseline_model_LogisticRegression.h5'))
+    try:
+        distilBERT_model = tf.keras.models.load_model(os.path.join(TRAINING_PATH, 'models', 'BEST_custom_classifier.h5'))
+    except Exception as e:
+        # Set this to the shape of your input array
+        INPUT_DIM = 2304  # 3 * 768 from your original Reshape
 
-ensemble_hard = CustomVotingClassifier(
-    estimators=[
-        ('baseline', baseline_model),
-        ('distilbert', distilBERT_model),
-    ],
-    input_map={
-        'baseline': 'X1',
-        'distilbert': 'X2',
-    },
-    voting='hard' # label-based majority voting
-)
+        # Define the previously trained model architecture again
+        def build_custom_classifier():
+            inputs = tf.keras.Input(shape=(INPUT_DIM,), name="input")
+            x = tf.keras.layers.Reshape((3, -1))(inputs)
+            x = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(64, return_sequences=False))(x)
+            x = tf.keras.layers.Dropout(0.3)(x)
+            x = tf.keras.layers.Dense(32, activation="relu")(x)
+            outputs = tf.keras.layers.Dense(1, activation="sigmoid")(x)
+            model = tf.keras.Model(inputs=inputs, outputs=outputs)
+            return model
 
-# =========================
-# Fit the Ensemble Models
-# =========================
-ensemble_soft.fit(
-    input_dict={
-        'X1': baseline_X_train,
-        'X2': distilBERT_X_train,
-    },
-    y_dict={
-        'X1': baseline_y_train,
-        'X2': distilBERT_y_train,
-    }
-)
+        # Load Paths
+        old_model_path = os.path.join(TRAINING_PATH, "models", "BEST_custom_classifier.h5")
+        new_model_path = os.path.join(TRAINING_PATH, "models", "BEST_custom_classifier.keras")
 
-ensemble_hard.fit(
-    input_dict={
-        'X1': baseline_X_train,
-        'X2': distilBERT_X_train,
-    },
-    y_dict={
-        'X1': baseline_y_train,
-        'X2': distilBERT_y_train,
-    }
-)
+        # Build and load weights
+        model = build_custom_classifier()
+        model.load_weights(old_model_path)
 
-#############################################################
+        # Save in .keras format
+        model.save(new_model_path, save_format="keras")
+        print(f"✅ Model converted and saved to {new_model_path}")
 
-# ==================================
-# Predict with RAW DistilBERT
-# ==================================
-proba_soft = ensemble_soft.predict_proba(
-    {
+        distilBERT_model = tf.keras.models.load_model(new_model_path,compile=False)
+
+    # =========================
+    # Load the Input Data
+    # =========================
+    # Data tokenized by raw DistilBERT
+    baseline_X_train = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'Text', 'X_train_text.npy'))
+    baseline_X_val = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'Text', 'X_val_text.npy'))
+    baseline_X_test = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'Text', 'X_test_text.npy'))
+    baseline_y_train = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'y_train_text.npy'))
+    baseline_y_val = np.load(os.path.join(DATA_PATH, 'Numpy Data', 'y_val_text.npy'))
+
+    # Data tokenized by fine-tuned DistilBERT
+    distilBERT_X_train = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'X_train_resampled.npy'))
+    distilBERT_X_val = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'X_val_resampled.npy'))
+    distilBERT_y_train = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'y_train_resampled.npy'))
+    distilBERT_y_val = np.load(os.path.join(TRAINING_PATH, 'resampled data', 'y_val_resampled.npy'))
+
+    print("Baseline X_train shape: ", baseline_X_train.shape)
+    print("DistilBERT X_train shape: ", distilBERT_X_train.shape)
+
+    # =========================
+    # Reshape the Data
+    # =========================
+    baseline_X_train = baseline_X_train.reshape(baseline_X_train.shape[0], -1)
+    baseline_X_val = baseline_X_val.reshape(baseline_X_val.shape[0], -1)
+    baseline_X_test = baseline_X_test.reshape(baseline_X_test.shape[0], -1)
+
+    distilBERT_X_train = distilBERT_X_train.reshape(distilBERT_X_train.shape[0], -1)
+    distilBERT_X_val = distilBERT_X_val.reshape(distilBERT_X_val.shape[0], -1)
+
+    print("After Reshaping:")
+    print("Baseline X_train shape: ", baseline_X_train.shape)
+    print("DistilBERT X_train shape: ", distilBERT_X_train.shape)
+
+    # =========================
+    # Instantiate the Ensembles
+    # with different votings
+    # =========================
+    ensemble_soft = CustomVotingClassifier(
+        estimators=[
+            ('baseline', baseline_model),
+            ('distilbert', distilBERT_model),
+        ],
+        input_map={
+            'baseline': 'X1',
+            'distilbert': 'X2',
+        },
+        voting='soft' # probability-based voting
+    )
+
+    ensemble_hard = CustomVotingClassifier(
+        estimators=[
+            ('baseline', baseline_model),
+            ('distilbert', distilBERT_model),
+        ],
+        input_map={
+            'baseline': 'X1',
+            'distilbert': 'X2',
+        },
+        voting='hard' # label-based majority voting
+    )
+
+    # =========================
+    # Fit the Ensemble Models
+    # =========================
+    ensemble_soft.fit(
+        input_dict={
+            'X1': baseline_X_train,
+            'X2': distilBERT_X_train,
+        },
+        y_dict={
+            'X1': baseline_y_train,
+            'X2': distilBERT_y_train,
+        }
+    )
+
+    ensemble_hard.fit(
+        input_dict={
+            'X1': baseline_X_train,
+            'X2': distilBERT_X_train,
+        },
+        y_dict={
+            'X1': baseline_y_train,
+            'X2': distilBERT_y_train,
+        }
+    )
+
+    #############################################################
+
+    # ==================================
+    # Predict with RAW DistilBERT
+    # ==================================
+    proba_soft = ensemble_soft.predict_proba(
+        {
+            'X1': baseline_X_val,
+            'X2': baseline_X_val,
+        }
+    )
+    labels_soft = (proba_soft[:, 1] > 0.5).astype(int)
+
+    labels_hard = ensemble_hard.predict({
         'X1': baseline_X_val,
         'X2': baseline_X_val,
-    }
-)
-labels_soft = (proba_soft[:, 1] > 0.5).astype(int)
-
-labels_hard = ensemble_hard.predict({
-    'X1': baseline_X_val,
-    'X2': baseline_X_val,
-})
-
-# =========================
-# Combine Predictions
-# Average of class 1 ('Suicidal') probabilities
-# =========================
-final_preds = (labels_soft + labels_hard >= 1).astype(int) # Majority voting
-
-# =========================
-# Save the Predictions 
-# And True Labels
-# =========================
-np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_baseline_predictions.npy'), final_preds)
-np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_baseline_true_labels.npy'), baseline_y_val)
-
-#############################################################
-
-# ==================================
-# Predict with fine-tuned DistilBERT
-# ==================================
-proba_soft = ensemble_soft.predict_proba(
-    {
-        'X1': distilBERT_X_val,
-        'X2': distilBERT_X_val,
-    }
-)
-labels_soft = (proba_soft[:, 1] > 0.5).astype(int)
-
-labels_hard = ensemble_hard.predict({
-    'X1': distilBERT_X_val,
-    'X2': distilBERT_X_val,
-})
-
-# =========================
-# Combine Predictions
-# Average of class 1 ('Suicidal') probabilities
-# =========================
-final_preds = (labels_soft + labels_hard >= 1).astype(int) # Majority voting
-
-print(f"Shape of Final Predictions: {final_preds.shape}")
-
-# =========================
-# Save the Predictions 
-# And True Labels
-# =========================
-np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_distilBERT_predictions.npy'), final_preds)
-np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_distilBERT_true_labels.npy'), distilBERT_y_val)
-
-# =========================
-# Save the Model
-# =========================
-joblib.dump(ensemble_soft, os.path.join(TRAINING_PATH, 'models', 'ensemble_soft_model.pkl'))
-joblib.dump(ensemble_hard, os.path.join(TRAINING_PATH, 'models', 'ensemble_hard_model.pkl'))
-
-# ===========================
-# Export Test Set Predictions
-# ===========================
-print(f"Shape of Test Set: {baseline_X_test.shape}")
-proba_soft = ensemble_soft.predict_proba(
-    {
-        'X1': baseline_X_test,
-        'X2': baseline_X_test,
-    }
-)
-labels_soft = (proba_soft[:, 1] > 0.5).astype(int)
-
-labels_hard = ensemble_hard.predict({
-    'X1': baseline_X_test,
-    'X2': baseline_X_test,
-})
-
-final_preds = (labels_soft + labels_hard >= 1).astype(int) # Majority voting
-
-print(f"Shape of Final Predictions (on the Test Set): {final_preds.shape}")
-
-results = []
-test_data = pd.read_json(os.path.join(TEST_DATA_PATH, 'depression_json'))
-print(f"Length of Test Data: {len(test_data)}")
-for idx, (text, label) in enumerate(zip(test_data['content'], final_preds)):
-    results.append({
-        'id': idx,
-        'predicted_label': int(label),
-        'raw_text': text,
     })
 
-# Define the output file path
-output_file_path = os.path.join(TRAINING_PATH, "Results", "Result_hybrid_model.jsonl")
+    # =========================
+    # Combine Predictions
+    # Average of class 1 ('Suicidal') probabilities
+    # =========================
+    final_preds = (labels_soft + labels_hard >= 1).astype(int) # Majority voting
 
-# Save the results to a JSONL file
-with open(output_file_path, "w") as jsonl_file:
-    for record in results:
-        jsonl_file.write(json.dumps(record) + "\n")
+    # =========================
+    # Save the Predictions 
+    # And True Labels
+    # =========================
+    np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_baseline_predictions.npy'), final_preds)
+    np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_baseline_true_labels.npy'), baseline_y_val)
 
-print(f"Results saved to {output_file_path}")
+    #############################################################
+
+    # ==================================
+    # Predict with fine-tuned DistilBERT
+    # ==================================
+    proba_soft = ensemble_soft.predict_proba(
+        {
+            'X1': distilBERT_X_val,
+            'X2': distilBERT_X_val,
+        }
+    )
+    labels_soft = (proba_soft[:, 1] > 0.5).astype(int)
+
+    labels_hard = ensemble_hard.predict({
+        'X1': distilBERT_X_val,
+        'X2': distilBERT_X_val,
+    })
+
+    # =========================
+    # Combine Predictions
+    # Average of class 1 ('Suicidal') probabilities
+    # =========================
+    final_preds = (labels_soft + labels_hard >= 1).astype(int) # Majority voting
+
+    print(f"Shape of Final Predictions: {final_preds.shape}")
+
+    # =========================
+    # Save the Predictions 
+    # And True Labels
+    # =========================
+    np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_distilBERT_predictions.npy'), final_preds)
+    np.save(os.path.join(TRAINING_PATH, 'Results', 'model_4_hybrid_distilBERT_true_labels.npy'), distilBERT_y_val)
+
+    # =========================
+    # Save the Model
+    # =========================
+    joblib.dump(ensemble_soft, os.path.join(TRAINING_PATH, 'models', 'ensemble_soft_model.pkl'))
+    joblib.dump(ensemble_hard, os.path.join(TRAINING_PATH, 'models', 'ensemble_hard_model.pkl'))
+
+    # ===========================
+    # Export Test Set Predictions
+    # ===========================
+    print(f"Shape of Test Set: {baseline_X_test.shape}")
+    proba_soft = ensemble_soft.predict_proba(
+        {
+            'X1': baseline_X_test,
+            'X2': baseline_X_test,
+        }
+    )
+    labels_soft = (proba_soft[:, 1] > 0.5).astype(int)
+
+    labels_hard = ensemble_hard.predict({
+        'X1': baseline_X_test,
+        'X2': baseline_X_test,
+    })
+
+    final_preds = (labels_soft + labels_hard >= 1).astype(int) # Majority voting
+
+    print(f"Shape of Final Predictions (on the Test Set): {final_preds.shape}")
+
+    results = []
+    test_data = pd.read_json(os.path.join(TEST_DATA_PATH, 'depression_json'))
+    print(f"Length of Test Data: {len(test_data)}")
+    for idx, (text, label) in enumerate(zip(test_data['content'], final_preds)):
+        results.append({
+            'id': idx,
+            'predicted_label': int(label),
+            'raw_text': text,
+        })
+
+    # Define the output file path
+    output_file_path = os.path.join(TRAINING_PATH, "Results", "Result_hybrid_model.jsonl")
+
+    # Save the results to a JSONL file
+    with open(output_file_path, "w") as jsonl_file:
+        for record in results:
+            jsonl_file.write(json.dumps(record) + "\n")
+
+    print(f"Results saved to {output_file_path}")
