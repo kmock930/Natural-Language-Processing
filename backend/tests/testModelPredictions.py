@@ -62,5 +62,35 @@ class TestModelPredictions(unittest.TestCase):
         self.assertTrue(isinstance(prediction, (np.int64, int)))
         self.assertIn(prediction, [0, 1])
 
+    def test_predict_ensemble(self):
+        model_names = ["Ensemble hard model", "Ensemble soft model"]
+        predictions = []
+        for model_name in model_names:
+            models = getModels(nameOnly=False, isLocal=True)
+            input_data = {
+                'title': "I want to die!",
+                'content': "I am going through a terrible week. I would rather kill myself!",
+                'hashtags': "#die #life #kill"
+            }
+            tokenizer = models["Model deep learning distilbert finetuned encoder"]
+            encoder = models["Fine tuned distilbert fold 2"]
+            classifier = models[model_name]
+            prediction = predict(
+                'ensemble', # alias
+                input_data, 
+                tokenizer, 
+                encoder,
+                classifier
+            )
+            print(f"Prediction of {model_name}: {prediction}")
+            self.assertTrue(isinstance(prediction, (np.int64, int)))
+            self.assertIn(prediction, [0, 1])
+            predictions.append(prediction)
+        # Majority Voting
+        final_prediction = (np.sum(predictions) >= 1).astype(int)
+        print(f"Final prediction from ensemble: {final_prediction}")
+        self.assertTrue(isinstance(final_prediction, (np.int64, np.int32, int)))
+        self.assertIn(final_prediction, [0, 1])
+
 if __name__ == '__main__':
     unittest.main()

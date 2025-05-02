@@ -9,6 +9,7 @@ sys.path.append(TRAINING_PATH)
 
 from model_4_hybrid import CustomVotingClassifier
 from models import getModels, predict as customPredict
+import numpy as np
 
 from fastapi import Request
 app = FastAPI()
@@ -29,7 +30,7 @@ async def get_model_names(request: Request):
 @app.post("/predict/{model_name}")
 async def predict(model_name: str, request: Request):
     models = getModels(nameOnly=False, isLocal=is_local_request(request))
-    if model_name in models:
+    if model_name in models or model_name.lower() == 'ensemble':
         body = await request.json()
         if 'baseline' in model_name.lower():
             if not all(key in body for key in ['title', 'content', 'hashtags']):
@@ -56,7 +57,9 @@ async def predict(model_name: str, request: Request):
         if 'distilbert' in model_name.lower():
             if not all(key in body for key in ['content']):
                 return {"error": "Invalid input format. Expected keys: content."}
-            content = body['content']
+            title = body['title'] if 'title' in body else ""
+            content = body['content'] # mandatory
+            hashtags = body['hashtags'] if 'hashtags' in body else ""
             print(f"Content: {content}")
             tokenizer = models["Model deep learning distilbert finetuned encoder"]
             print("Tokenizer is loaded.")
@@ -68,14 +71,49 @@ async def predict(model_name: str, request: Request):
             prediction = customPredict(
                 modelName="distilBERT",
                 inputData={
-                    'title': "",
+                    'title': title,
                     'content': content,
-                    'hashtags': ""
+                    'hashtags': hashtags
                 },
                 tokenizer=tokenizer,
                 encoder=encoder,
                 model=model
             )
+        if 'ensemble' in model_name.lower():
+            if not all(key in body for key in ['content']):
+                return {"error": "Invalid input format. Expected keys: content."}
+            title = body['title'] if 'title' in body else ""
+            content = body['content'] # mandatory
+            hashtags = body['hashtags'] if 'hashtags' in body else ""
+
+            tokenizer = models["Model deep learning distilbert finetuned encoder"]
+            distilBERT_encoder = models["Fine tuned distilbert fold 2"]
+            model_names = ["Ensemble hard model", "Ensemble soft model"]
+
+            predictions = []
+            for model_name in model_names:
+                ensemble_model = models[model_name]
+
+                prediction = customPredict(
+                    modelName=model_name,
+                    inputData={
+                        'title': title,
+                        'content': content,
+                        'hashtags': hashtags
+                    },
+                    tokenizer=tokenizer,
+                    encoder=distilBERT_encoder,
+                    model=ensemble_model
+                )
+                predictions.append(prediction)
+                print(f"Prediction of {model_name}: {prediction}")
+
+            # Combine predictions from both models via Majority Voting
+            final_prediction = (np.sum(predictions) >= 1).astype(int)
+            print(f"Final prediction: {final_prediction}")
+            prediction = final_prediction
+        
+        # Convert prediction to a more readable format
         if isinstance(prediction, float):
             prediction = 1 if prediction >= 0.5 else 0
         return {"Prediction": 'suicidal' if prediction == 1 else 'non-suicidal'}

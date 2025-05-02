@@ -34,9 +34,17 @@ paths:
             schema:
               type: object
               properties:
+                title:
+                  type: string
+                  description: A string of a post's title
+                  nullable: true
                 content:
                   type: string
                   description: A string of a post's textual content
+                hashtags:
+                  type: string
+                  description: A string of all hashtags in the post, could be separated by an empty space
+                  nullable: true
       responses:
         '200':
           description: OK
@@ -59,6 +67,29 @@ paths:
                   type: string
                   description: A string of all hashtags in the post, could be separated by an empty space
                   
+      responses:
+        '200':
+          description: OK
+  /predict/ensemble:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: A string of a post's title
+                  nullable: true
+                content:
+                  type: string
+                  description: A string of a post's textual content
+                hashtags:
+                  type: string
+                  description: A string of all hashtags in the post, could be separated by an empty space
+                  nullable: true
       responses:
         '200':
           description: OK

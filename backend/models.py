@@ -77,5 +77,29 @@ def predict(modelName, inputData, tokenizer, encoder, model):
                 prediction = prediction[0]
             if isinstance(prediction, (np.float32, np.float64, float)):
                 prediction = float(prediction)
-    
+        case 'ensemble':
+            if isinstance(inputData, dict):
+                encoded_inputs = []
+                for key, value in inputData.items():
+                    encoded = tokenizer(
+                        value, 
+                        truncation=True, 
+                        padding="max_length", 
+                        max_length=32, 
+                        return_tensors="tf"
+                    )
+                    if hasattr(encoder, 'distilbert'):
+                        encoder = encoder.distilbert
+                    cls_embeddings = extract_cls_from_embeddings(encoder, encoded)
+                    encoded_inputs.append(cls_embeddings)
+                encoded_inputs = np.concatenate(encoded_inputs, axis=1)
+            else:
+                raise ValueError("Input data must be a dictionary with keys: title, content, hashtags.")
+            proba = model.predict_proba({
+                'X1': encoded_inputs,
+                'X2': encoded_inputs
+            })
+            labels = (proba[:, 1] >= 0.5).astype(int)
+            print(f"Labels: {labels}")
+
     return prediction
