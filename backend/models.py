@@ -100,6 +100,10 @@ def predict(modelName, inputData, tokenizer, encoder, model):
                 'X2': encoded_inputs
             })
             labels = (proba[:, 1] >= 0.5).astype(int)
-            print(f"Labels: {labels}")
+            if isinstance(labels, (list, np.ndarray)) and len(labels) > 0:
+                prediction = labels[0]
+            if isinstance(prediction, (np.float32, np.float64, float)):
+                prediction = float(prediction)
+            print(f"[DEBUG] Final Prediction from Ensemble: {prediction}")
 
     return prediction

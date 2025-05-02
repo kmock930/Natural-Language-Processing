@@ -83,7 +83,7 @@ class TestModelPredictions(unittest.TestCase):
                 classifier
             )
             print(f"Prediction of {model_name}: {prediction}")
-            self.assertTrue(isinstance(prediction, (np.int64, int)))
+            self.assertTrue(isinstance(prediction, (np.int64, np.int32, int)))
             self.assertIn(prediction, [0, 1])
             predictions.append(prediction)
         # Majority Voting
