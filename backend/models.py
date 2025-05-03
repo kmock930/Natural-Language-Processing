@@ -9,9 +9,14 @@ from model_4_hybrid import CustomVotingClassifier
 
 # For Loading Models
 import tensorflow as tf
-from transformers import DistilBertTokenizer, TFDistilBertModel
+from transformers import DistilBertTokenizer, TFDistilBertModel, AutoTokenizer, AutoModelForCausalLM
 import joblib
 import numpy as np
+
+# ignore warnings
+import warnings
+import torch
+warnings.filterwarnings("ignore")
 
 def getModels(nameOnly=False, isLocal=False):
     models = {}
@@ -105,5 +110,66 @@ def predict(modelName, inputData, tokenizer, encoder, model):
             if isinstance(prediction, (np.float32, np.float64, float)):
                 prediction = float(prediction)
             print(f"[DEBUG] Final Prediction from Ensemble: {prediction}")
+        case 'deepseek':
+            if isinstance(inputData, dict):
+                for key, value in inputData.items():
+                    system_prompt = f"You are an AI mental health assistant. Classify the following text from a social media post's {key} and return only 'suicidal' or 'non-suicidal':\n"
+                    encoded = tokenizer(
+                        system_prompt + value,
+                        return_tensors="pt"
+                    )
+            else:
+                raise ValueError("Input data must be a dictionary with keys: title, content, hashtags.")
+            # Generate predictions using the model
+            with torch.no_grad():
+                outputs = model.generate(
+                    input_ids=encoded['input_ids'].to(model.device),
+                    attention_mask=encoded['attention_mask'].to(model.device),
+                    max_new_tokens=20,
+                    temperature=0.7,
+                    do_sample=True,
+                    pad_token_id=tokenizer.eos_token_id
+                )
+            # Decode the generated output
+            decoded_output = tokenizer.decode(outputs[0][encoded["input_ids"].shape[1]:], skip_special_tokens=True).strip().lower()
+            # Convert the decoded output to a float prediction (0 or 1)
+            pred_label = None
+            if "suicidal" in decoded_output:
+                pred_label = 1
+            elif "non-suicidal" in decoded_output:
+                pred_label = 0
+            if pred_label is not None:
+                prediction = pred_label
+            else:
+                # Confidence
+                prediction = 0.9 if "definitely" in decoded_output or "clearly" in decoded_output else 0.7
 
     return prediction
+
+def getDeepSeekModel():
+    MODEL_NAME = "deepseek-ai/deepseek-llm-7b-base"
+    OUTPUT_DIR = os.path.join(MODELS_PATH, "deepseek_model")
+    if not os.path.exists(os.path.join(OUTPUT_DIR, "pretrained_autotokenizer")):
+        tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+        # Set special tokens
+        tokenizer.pad_token = tokenizer.eos_token
+        tokenizer.padding_side = "right"
+        # Save tokenizer
+        tokenizer.save_pretrained(os.path.join(OUTPUT_DIR, "pretrained_autotokenizer"))
+        print(f"✅ Tokenizer saved to {os.path.join(OUTPUT_DIR, 'pretrained_autotokenizer')}")
+    else:
+        tokenizer = AutoTokenizer.from_pretrained(os.path.join(OUTPUT_DIR, "pretrained_autotokenizer"))
+        print(f"✅ Tokenizer loaded from {os.path.join(OUTPUT_DIR, 'pretrained_autotokenizer')}")
+    if not os.path.exists(os.path.join(OUTPUT_DIR, "pretrained_llm_model")):
+        torch.cuda.empty_cache()
+        model = AutoModelForCausalLM.from_pretrained(
+            MODEL_NAME,
+            device_map= "auto" if torch.cuda.is_available() else None,
+            load_in_8bit=True # Enable 8-bit quantization for memory efficiency
+        )
+        model.save_pretrained(os.path.join(OUTPUT_DIR, "pretrained_llm_model"))
+        print(f"✅ Model saved to {MODEL_NAME}")
+    else:
+        model = AutoModelForCausalLM.from_pretrained(os.path.join(OUTPUT_DIR, "pretrained_llm_model"))
+        print(f"✅ Model loaded from {os.path.join(OUTPUT_DIR, 'pretrained_llm_model')}")
+    return model, tokenizer

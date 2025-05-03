@@ -8,8 +8,11 @@ import sys
 sys.path.append(TRAINING_PATH)
 
 from model_4_hybrid import CustomVotingClassifier
-from models import getModels, predict as customPredict
+from models import getModels, predict as customPredict, getDeepSeekModel
 import numpy as np
+
+# Logging
+import time
 
 from fastapi import Request
 from fastapi.responses import JSONResponse
@@ -30,8 +33,10 @@ async def get_model_names(request: Request):
 
 @app.post("/predict/{model_name}")
 async def predict(model_name: str, request: Request):
+    startTime = time.time()
+
     models = getModels(nameOnly=False, isLocal=is_local_request(request))
-    if model_name in models or model_name.lower() == 'ensemble':
+    if model_name in models or model_name.lower() in ['ensemble', 'deepseek']:
         body = await request.json()
         if 'baseline' in model_name.lower():
             if not all(key in body for key in ['title', 'content', 'hashtags']):
@@ -113,15 +118,51 @@ async def predict(model_name: str, request: Request):
             final_prediction = (np.sum(predictions) >= 1).astype(int)
             print(f"Final prediction: {final_prediction}")
             prediction = final_prediction
+        if 'deepseek' in model_name.lower():
+            if not all(key in body for key in ['content']):
+                return JSONResponse(status_code=400, content={"error": "Invalid input format. Expected keys: content."})
+            title = body['title'] if 'title' in body else ""
+            content = body['content']
+            hashtags = body['hashtags'] if 'hashtags' in body else ""
+
+            model, tokenizer = getDeepSeekModel()
+            encoder = None # No encoder needed for DeepSeek model
+            prediction = customPredict(
+                modelName="deepseek",
+                inputData={
+                    'title': title,
+                    'content': content,
+                    'hashtags': hashtags
+                },
+                tokenizer=tokenizer,
+                encoder=encoder,
+                model=model
+            )
+            print(f"Prediction of DeepSeek model: {prediction}")
 
         # Convert prediction to a more readable format
+        ret_content = {}
         if isinstance(prediction, float):
             prediction = 1 if prediction >= 0.5 else 0
+            ret_content = {"Prediction": 'suicidal' if prediction == 1 else 'non-suicidal'}
+        elif isinstance(prediction, str):
+            ret_content = {"Prediction": prediction}
+        else:
+            try:
+                prediction = int(prediction)
+                ret_content = {"Prediction": 'suicidal' if prediction == 1 else 'non-suicidal'}
+            except ValueError:
+                ret_content = {"error": f"Unexpected prediction format: {type(prediction)}", "Prediction": prediction}
+
+        endTime = time.time()
+        print(f"Elapsed runtime: {endTime - startTime} seconds")
         return JSONResponse(
-            status_code=200, 
-            content={"Prediction": 'suicidal' if prediction == 1 else 'non-suicidal'}
+            status_code=200 if 'error' not in ret_content else 400, 
+            content=ret_content
         )
     else:
+        endTime = time.time()
+        print(f"Elapsed runtime: {endTime - startTime} seconds")
         return JSONResponse(status_code=400, content={"error": "Model not found"})
 
 
